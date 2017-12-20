@@ -1,28 +1,26 @@
-import React, { Component } from "react";
-//for material-ui
-import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
-import MyAwesomeReactComponent from './components/MyAwesomeReactComponent';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Main from "./pages/Main";
+import NoMatch from "./pages/NoMatch";
+import Nav from "./components/Nav";
+import { Container } from "./components/Grid";
 
-import logo from "./logo.svg";
-import "./App.css";
-
-class App extends Component {
-  render() {
-    return (
-      <MuiThemeProvider>
-        <div className="App">
-          <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to React</h1>
-          </header>
-          <p className="App-intro">
-            To get started, edit <code>src/App.js</code> and save to reload.
-          </p>
-        </div>
-        <MyAwesomeReactComponent />
-      </MuiThemeProvider>
-    );
-  }
-}
+const App = () =>
+  <Router>
+    <div className="container">
+      <Nav />
+      <Container fluid>
+            <Switch>
+              <Route exact path="/" component={Main} />
+              <Route exact path="/main" component={Main} />
+              <Route exact path="/main/:id" component={Main} />
+              <Route component={NoMatch} />
+            </Switch>
+      </Container>
+      <footer className="footer text-center">
+        <p className="text-muted small mb-0">Copyright &copy; João Paulo Alexandre de Oliveira 2017</p>
+      </footer>
+    </div>
+  </Router>;
 
 export default App;
