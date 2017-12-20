@@ -1,9 +1,8 @@
-# New York Times Scrubber
-#### React-based rendition of the New York Times Article Search application.
+# Review Butler
 
 ## Synopsis
 
-React-based rendition of the New York Times Article Search application.
+
 
 ## Technologies Used
 * [React]
@@ -13,11 +12,11 @@ React-based rendition of the New York Times Article Search application.
 
 
 ## Created By
-
 [JP Oliveira](https://github.com/JPauloBR) 
+[William Brooks](https://github.com/thewillwill) 
 
 ## Live App
-[NYTReact](https://intense-brushlands-88780.herokuapp.com/)
+[TBA](#)
 
 ## Acknowledgement
 Instructor - David Hallinan
