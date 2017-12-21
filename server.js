@@ -36,7 +36,7 @@ passport.deserializeUser(User.deserializeUser());
 mongoose.Promise = global.Promise;
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/nytreact",
+  process.env.MONGODB_URI || "mongodb://localhost/reviewbutler",
   {
     useMongoClient: true
   }
