@@ -3,14 +3,19 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Main from "./pages/Main";
 import NoMatch from "./pages/NoMatch";
 import Nav from "./components/Nav";
+import Review from "./components/Review";
+import ReviewList from "./components/ReviewList";
 import { Container } from "./components/Grid";
 
 const App = () => (
-  <Router>
-    <div className="container">
-      <Container fluid>Insert Review here</Container>
-    </div>
-  </Router>
+  <div>
+    <ReviewList/>
+    <Review/>
+  </div>
+  //<Router>
+        //<Route exact path="/" component={Review} />
+        //<Route exact path="/" component={ReviewList} />
+  //</Router>
 );
 
 export default App;
