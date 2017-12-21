@@ -1,8 +1,5 @@
 import React from "react";
-import SaveBtn from "../../components/SaveBtn";
 import { Link } from "react-router-dom";
-import { Col, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
 import { FormBtn, Input, TextArea} from "../../components/Form"
 
 const Review = props => (
