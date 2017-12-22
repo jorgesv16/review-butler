@@ -1,0 +1,13 @@
+.reviews {
+    width: 320px;
+    transition: all 0.5s ease-in-out;
+    background-color: #F0F2F8;
+    color: #0c132d;
+    overflow-y: scroll;
+}
+
+.reviews ul {
+    list-style: none outside none;
+    margin: 0px;
+    padding: 0px;
+}

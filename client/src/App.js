@@ -32,12 +32,14 @@ class App extends Component {
 		console.log("reviews:");
 		console.log(this.state.reviews);
 		return (
-			<div>
+		<main class="container-full full-height">
+        	<div class="row">
 				<ReviewList
 				onReviewSelect={selectedReview => this.setState(selectedReview)}
 				reviews={this.state.reviews}/>
 				<ReviewDetail review={this.state.selectedReview}/>
-			</div>
+            </div>
+		</main>
 		);
 	}
 }

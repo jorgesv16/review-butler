@@ -13,28 +13,30 @@ mongoose.connect(
 
 const reviewSeed = [
   {
-    title: "The Dead Zone",
-    user_name: "Stephen King",
-    text:
-      'A number-one national best seller about a man who wakes up from a five-year coma able to see people\'s futures and the terrible fate awaiting mankind in The Dead Zone - a "compulsive page-turner" (The Atlanta Journal-Constitution). Johnny Smith awakens from a five-year coma after his car accident and discovers that he can see people\'s futures and pasts when he touches them. Many consider his talent a gift; Johnny feels cursed. His fiancée married another man during his coma, and people clamor for him to solve their problems. When Johnny has a disturbing vision after he shakes the hand of an ambitious and amoral politician, he must decide if he should take drastic action to change the future. The Dead Zone is a "faultlessly paced...continuously engrossing" (Los Angeles Times) novel of second sight.',
+    title: null,
+    rating: 4,    
+    user_name: "Ethan H.",
+    text: "Fast delivery. Burrito was delicious. Only down side was the ordering menu. Did not give me many options for add-ons. Definitely comparable to Gordo.",
     timestamp: new Date(Date.now()),
-    rating: 5,
+    review_date: "11/28/2017",
+
   },
   {
-    title: "Lord of the Flies",
-    user_name: "William Golding",
-    text:
-      "The tale of a party of shipwrecked schoolboys, marooned on a coral island, who at first enjoy the freedom of the situation but soon divide into fearsome gangs which turn the paradise island into a nightmare of panic and death.",
+    title: null,
+    user_name: "Diane W.",
+    rating: 5,    
+    text: "Reservations are tough to get so I logged on 60 days before we were scheduled to be in San Francisco and got a reservation for 5:30.   Too early?   Not if you want a guarantee you will see all of the cart food.   Once diners start getting staggered, as groups from the 5:30 slot start leaving, those fill-in tables won't always get to see all of the cart food  (according to our server).     So I was happy we had an early spot.  We really enjoyed our meal.  With only 2 of us, the cart approach with the small plates, gave us the opportunity to try a wide variety of dishes.   If anyone in your party has food allergies/restrictions, the restaurant will provide a printed list of the cart food, otherwise part of the experience is the 'surprise' of the cart contents.   We tried the majority of the cart items and most of them were excellent (oyster, fry bread with burrata, tempura squash were the standouts).   From the menu we ordered:   - Beef tongue pastrami on buckwheat poppy seed pancake (one of my favorite dishes) - State bird (crispy and tender but would not order it again - too plain) - Beef and broccoli (tender meat, my husband did not like the sauce) - Ice cream sandwiches (light, delicious) The restaurant did get very noisy and the tables are fairly close together, so don't expect a romantic private meal, just good food with a few surprises.",
     timestamp: new Date(Date.now()),
-    rating: 6,
+    review_date: "11/27/2017",
+
   },
   {
-    title: "The Catcher in the Rye",
-    user_name: "J.D. Salinger",
-    text:
-      "The Catcher in the Rye is a 1951 novel by J. D. Salinger. A controversial novel originally published for adults, it has since become popular with adolescent readers for its themes of teenage angst and alienation. It has been translated into almost all of the world's major languages. Around 1 million copies are sold each year with total sales of more than 65 million books. The novel's protagonist Holden Caulfield has become an icon for teenage rebellion. The novel also deals with complex issues of innocence, identity, belonging, loss, and connection.",
+    title: null,
+    user_name: "James J.",
+    rating: 1,    
+    text:"Ordering from this place is a JOKE  11$ Caesar salad consists of 4 pieces of non sliced ice burg lettuce with 2 croutons and some dressing  Unbelievable  House salad dressing taste horrible as well",
     timestamp: new Date(Date.now()),
-    rating: 3,
+    review_date: "11/27/2017",
   },
   {
     title: "The Punch Escrow",
