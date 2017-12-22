@@ -482,6 +482,11 @@ textarea {
     text-decoration: none;
 }
 
+.sidebar li a:hover {
+    background-color: #4468af;
+    transition: background-color .3s linear 0s;
+}
+
 .sidebar li a.active {
     background-color: #1f3173;
     transition: background-color .3s linear 0s;
@@ -506,7 +511,7 @@ textarea {
 *******************************/
 
 .reviews {
-    width: 400px;
+    width: 320px;
     transition: all 0.5s ease-in-out;
     background-color: #fff;
     color: #0c132d;
@@ -529,7 +534,7 @@ textarea {
     height: 100px;
     padding: 20px 20px 20px 20px;
     text-decoration: none;
-    width: 300px;
+    width: 320px;
     transition: background-color .3s linear 0s;
     list-style: none outside none;
     border-bottom: 1px solid #eee;

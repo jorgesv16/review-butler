@@ -19,7 +19,7 @@ const userSchema = new Schema({
   display_occupation: String
 });
 
-User.plugin(passportLocalMongoose);
+userSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model("User", userSchema);
 
