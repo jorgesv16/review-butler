@@ -5,14 +5,16 @@ const apiRoutes = require("./api");
 // API Routes
 router.use("/api", apiRoutes);
 
+// define the home page route
+router.get('/dash', function (req, res) {
+  res.send('Birds home page')
+})
+
 // If no API routes are hit, send the React app
 router.use(function(req, res) {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 
-// define the home page route
-router.get('/dash', function (req, res) {
-  res.send('Birds home page')
-})
+
 
 module.exports = router;

@@ -1,44 +1,21 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Dashboard from "./pages/Dashboard";
+import Settings from "./pages/Settings";
+import Sidebar from "./components/Sidebar";
+import Inbox from "./pages/Inbox";
 
-import API from "./utils/API";
-import ReviewDetail from "./components/ReviewDetail";
-import ReviewList from "./components/ReviewList";
+const App = () => (
+	<Router>
+	<div>
+		<Sidebar />
+		<Switch>
+			<Route exact path="/dashboard" component={Dashboard} />
+			<Route exact path="/settings" component={Settings} />
+			<Route exact path="/inbox" component={Inbox} />
+		</Switch>
+	</div>
+	</Router>
+);
 
-
-class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			reviews: [],
-			selectedReview: null
-		};
-		this.loadReviews();
-	}
-
-	loadReviews() {
-		API.getReviews()
-			.then(res =>
-				this.setState({
-					reviews: res.data,
-					selectedReview: res.data[0]
-				})
-			)
-			.catch(err => console.log(err));
-	};
-
-
-	render() {
-		console.log("reviews:");
-		console.log(this.state.reviews);
-		return (
-			<div>
-				<ReviewList
-				onReviewSelect={selectedReview => this.setState(selectedReview)}
-				reviews={this.state.reviews}/>
-				<ReviewDetail review={this.state.selectedReview}/>
-			</div>
-		);
-	}
-}
 export default App;
