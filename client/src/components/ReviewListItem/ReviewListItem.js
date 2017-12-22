@@ -1,28 +1,26 @@
 import React from "react";
+import "./ReviewListItem.css";
 import StarIcon from "../../components/StarIcon";
 
 const ReviewListItem = ({review, onReviewSelect, activeClass}) => {
 	const reviewText = review.text;
 	const reviewAuthor = review.user_name;
-	var stars = [];
+	let stars = [];
+
+	let itemClass = "inactive";
 
 	//display a number of StarIcon components based rating (1 - 5)
-	for (var i = review.rating - 1; i >= 0; i--) {
+	for (var i = 0; i < review.rating; i++) {
 		 stars.push(<StarIcon key={i}/>);
 	}
 
-	if (this.active) {
-		activeClass= "active";
-	}
-
-	else {
-				activeClass= "inactive";
-
+	if (review.rating == 1) {
+		itemClass= "active";
 	}
 
 	return (
-		<li>
-			<a onClick={() => onReviewSelect(review)} className={activeClass} href="#">
+		<li onClick={() => onReviewSelect(review)} className={itemClass}>
+			
 				<div className="review-item-icons">
 					<i className="material-icons md-18 md-dark md-inactive">reply</i>
 				</div>
@@ -38,7 +36,7 @@ const ReviewListItem = ({review, onReviewSelect, activeClass}) => {
 						{reviewText}
 					</div>
 				</div>
-			</a>
+
 		</li>
 		);
 
