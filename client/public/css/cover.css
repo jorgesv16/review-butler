@@ -276,6 +276,43 @@ section {
 	font-size: 16px;
 }
 
+/* SIGNUP SECTION
+-------------------------------------------------- */
+.signup-sec {
+	background: url("../img/team_hero.jpg") no-repeat center center;
+	background-size: cover;
+	color: #fff;
+	position: relative;
+	margin-top: 82px;
+}
+.signup-sec:before {
+	content: ' ';
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: rgba(22,122,192,0.8);
+	top: 0;
+	left: 0
+}
+.signup-sec h2 {
+	font-size: 55px;
+	font-weight: 800;
+	margin-top: 25%;
+}
+.signup-sec h2 small {
+	display: block;
+	font-size: 24px;
+	margin-bottom: 15px;
+	padding-left: 10px;
+}
+.signup-sec p {
+	font-size: 16px;
+}
+
+.gradient {
+	background: rgba(0,0,0,0.5);
+	padding: 50px;
+}
 
 .action-sec{width:100%; float:left; background:#222}
 .action-box{float:left; width:100%; text-align:center;}
