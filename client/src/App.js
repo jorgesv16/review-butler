@@ -1,38 +1,42 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import Main from "./pages/Main";       //DELETE ME
-import NoMatch from "./pages/NoMatch"; //DELETE ME
-import Nav from "./components/Nav";    //DELETE ME
-
 import API from "./utils/API";
-import Review from "./components/Review";
+import ReviewDetail from "./components/ReviewDetail";
 import ReviewList from "./components/ReviewList";
-import { Container } from "./components/Grid";
+
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			reviews: [],
+			selectedReview: null
 		};
-//		this.loadReviews(); 
+		this.loadReviews();
 	}
 
-	// loadReviews() {
-	// 	API.getReviews()
-	// 		.then(res =>
-	// 			this.setState({
-	// 				reviews: res.data
-	// 			})
-	// 		)
-	// 		.catch(err => console.log(err));
-	// }
+	loadReviews() {
+		API.getReviews()
+			.then(res =>
+				this.setState({
+					reviews: res.data,
+					selectedReview: res.data[0]
+				})
+			)
+			.catch(err => console.log(err));
+	};
+
 
 	render() {
+		console.log("reviews:");
+		console.log(this.state.reviews);
 		return (
 			<div>
-				<ReviewList />
-				<Review />
+				<ReviewList
+				onReviewSelect={selectedReview => this.setState(selectedReview)}
+				reviews={this.state.reviews}/>
+				<ReviewDetail review={this.state.selectedReview}/>
 			</div>
 		);
 	}
