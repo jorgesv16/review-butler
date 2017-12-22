@@ -365,7 +365,7 @@ textarea {
 
 
 /*******************************
-/* Custom Styles 
+/* Material Icon Styles 
 *******************************/
 
 .material-icons.md-18 {
@@ -510,86 +510,6 @@ textarea {
 /* Reviews List (2nd Col)
 *******************************/
 
-.reviews {
-    width: 320px;
-    transition: all 0.5s ease-in-out;
-    background-color: #fff;
-    color: #0c132d;
-    overflow-y: scroll;
-}
-
-.reviews ul {
-    list-style: none outside none;
-    margin: 0px;
-    padding: 0px;
-}
-
-.reviews li {
-    margin: 0px;
-}
-
-.reviews li a {
-    position: relative;
-    display: block;
-    height: 100px;
-    padding: 20px 20px 20px 20px;
-    text-decoration: none;
-    width: 320px;
-    transition: background-color .3s linear 0s;
-    list-style: none outside none;
-    border-bottom: 1px solid #eee;
-    font-size: 13px;
-    text-decoration: none;
-    color: #0c132d;
-}
-
-.review-list li a.active {
-    background-color: #1f3173;
-    transition: background-color .3s linear 0s;
-}
-
-
-
-.review-item-icons {
-    float: left;
-    padding: 25px 0px 0px 0px;
-    margin: 0 auto;
-    width: 40px;
-    height: 100%;
-}
-
-.replied {
-    fill: #ddd;
-}
-
-.review-item-details {
-    float: left;
-    width: 220px;
-    height: 100%;
-}
-
-.review-item-author {
-    font-weight: bold;
-}
-
-.review-item-date {
-    font-weight: lighter;
-    color: rgba(0, 0, 0, 0.3);
-    font-size: 0.8em;
-}
-
-
-.review-item-rating {}
-
-.review-item-snippet {
-    font-size: 0.8em;
-    width: 100%;
-    white-space: nowrap; 
-    overflow: hidden;
-    text-overflow: ellipsis; 
-    color: rgba(0, 0, 0, 0.3);
-
-}
 
 
 

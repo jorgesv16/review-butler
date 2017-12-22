@@ -6,7 +6,7 @@ var reviewSchema = new Schema({
   word_count: Number,
   sentiment_score: Number,
   text: {type: String, required: true },
-  title: {type: String, required: true },
+  title: {type: String, required: true, default: null },
   sentences_object: Array,
   review_date: { type: Date, required: true },
   response_date: { type: Date, default: null },
