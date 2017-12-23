@@ -1,4 +1,7 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import SidebarLink from "../SidebarLink";
+
 import "./Sidebar.css";
 
 const Sidebar = props => (
@@ -10,10 +13,10 @@ const Sidebar = props => (
                 <span className='logo-text'>Review Butler</span>
             </div>
             <ul>
-                <li><a href='/dashboard'>Dashboard</a> </li>
-                <li><a className='active' href='/inbox'>Reviews</a></li>
-                <li><a href='/settings'>Settings</a> </li>
-                <li><a href='cover.html'>Logout</a> </li>
+                <li><NavLink to="/dashboard" activeClassName='active'>Dashboard</NavLink></li>
+                <li><NavLink to="/inbox" activeClassName='active'>Reviews</NavLink></li>
+                <li><NavLink to="/settings" activeClassName='active'>Settings</NavLink></li>
+                <li><NavLink to="/logout" activeClassName='active'>Logout</NavLink></li>
             </ul>
         </div>
     </div>
