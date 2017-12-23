@@ -312,6 +312,7 @@ section {
 .gradient {
 	background: rgba(0,0,0,0.5);
 	padding: 50px;
+	margin: 0 auto;
 }
 
 .action-sec{width:100%; float:left; background:#222}

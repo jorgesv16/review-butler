@@ -423,87 +423,11 @@ textarea {
 }
 
 
+
 /*******************************
 /* Left Menu 
 *******************************/
 
-.sidebar {
-    width: 220px;
-    background-color: #304cb2;
-    transition: all 0.5s ease-in-out;
-    color: #fff;
-}
-
-
-.logo-container {
-    background-color: #111b40;
-    color: #FFF;
-    display: inline-block;
-    height: 120px;
-    margin: 0;
-    width: 220px;
-    padding-top: 20px;
-    text-align: center;
-}
-
-.logo-text {
-    font-family: 'Yellowtail', cursive;
-    font-size: 2em;
-    letter-spacing: 0.02em;
-    line-height: 32px;
-}
-
-.logo-image {
-    width: 40px;
-    display: block;
-    margin: 0 auto;
-}
-
-
-.sidebar ul {
-    list-style: none outside none;
-    margin: 0px;
-    padding: 0px;
-}
-
-.sidebar li a {
-    position: relative;
-    display: block;
-    height: 120px;
-    padding: 50px 0 50px 30px;
-    text-decoration: none;
-    width: 220px;
-    transition: background-color .3s linear 0s;
-    color: #fff;
-    list-style: none outside none;
-    border-bottom: 1px solid #4468af;
-    font-size: 13px;
-    text-transform: uppercase;
-    text-decoration: none;
-}
-
-.sidebar li a:hover {
-    background-color: #4468af;
-    transition: background-color .3s linear 0s;
-}
-
-.sidebar li a.active {
-    background-color: #1f3173;
-    transition: background-color .3s linear 0s;
-}
-
-.sidebar li a.active:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 55px;
-    width: 100%;
-    border-bottom: 7px solid transparent;
-    border-right: 7px solid #FFF;
-    border-top: 7px solid transparent;
-    height: 0;
-    margin: 0 -9px 0 0;
-}
 
 
 /*******************************

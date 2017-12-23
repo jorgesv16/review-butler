@@ -2,7 +2,7 @@ import React from "react";
 import "./ReviewListItem.css";
 import StarIcon from "../../components/StarIcon";
 
-const ReviewListItem = ({review, onReviewSelect, activeClass}) => {
+const ReviewListItem = ({review, onReviewClicked, active}) => {
 	const reviewText = review.text;
 	const reviewAuthor = review.user_name;
 	let stars = [];
@@ -14,12 +14,12 @@ const ReviewListItem = ({review, onReviewSelect, activeClass}) => {
 		 stars.push(<StarIcon key={i}/>);
 	}
 
-	if (review.rating == 1) {
+	if (active) {
 		itemClass= "active";
 	}
 
 	return (
-		<li onClick={() => onReviewSelect(review)} className={itemClass}>
+		<li onClick={() => onReviewClicked(review._id)} className={itemClass}>
 			
 				<div className="review-item-icons">
 					<i className="material-icons md-18 md-dark md-inactive">reply</i>

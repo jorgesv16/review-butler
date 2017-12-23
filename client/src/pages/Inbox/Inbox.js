@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Sidebar from "../../components/Sidebar";
 import API from "../../utils/API";
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
@@ -10,7 +8,7 @@ class Inbox extends Component {
 		super(props);
 		this.state = {
 			reviews: [],
-			selectedReview: null
+			selectedReviewID: null
 		};
 		this.loadReviews();
 	}
@@ -20,25 +18,39 @@ class Inbox extends Component {
 			.then(res =>
 				this.setState({
 					reviews: res.data,
-					selectedReview: res.data[0]
+					selectedReviewID: res.data[0]._id  //set the initial review to the first review ID
 				})
 			)
 			.catch(err => console.log(err));
 	}
 
+	openReview(id) {
+		// const reviews = this.state.reviews;
+		// const index = reviews.findIndex(x => x._id === id);
+		// reviews[index].read = 'true';
+		this.setState({
+			selectedReviewID: id,
+			// reviews,
+		});
+	}
+
 	render() {
+		//get the current review
+		const currentReview = this.state.reviews.find(x => x._id === this.state.selectedReviewID);
 		return (
 			<div>
 				<ReviewList
-					onReviewSelect={selectedReview => this.setState(selectedReview)}
 					reviews={this.state.reviews}
+					onReviewSelected={(id) => { this.openReview(id); }}
+					selectedReviewID={this.state.selectedReviewID}
+					
 				/>
-
-				<ReviewDetail review={this.state.selectedReview} />
-
+				<ReviewDetail review={currentReview} />
 			</div>
 		);
 	}
 }
 
 export default Inbox;
+
+//selectedReview => this.setState({selectedReview: null})
