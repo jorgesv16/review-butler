@@ -1,9 +1,7 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import Sidebar from "../../components/Sidebar";
+
 import API from "../../utils/API";
-import ReviewDetail from "../../components/ReviewDetail";
-import ReviewList from "../../components/ReviewList";
+
 
 class Inbox extends Component {
   constructor(props) {
