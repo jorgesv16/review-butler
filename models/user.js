@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   id:  Number,
   username: String,
   password: { type: String, select: false },  
@@ -15,11 +15,17 @@ const userSchema = new Schema({
   platform_url: String,
   display_name: String,
   url: String,
-  display_occupation: String
+  display_occupation: String,
+  reviews: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: "Review"
+    }
+  ]
 });
 
-userSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose);
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", UserSchema);
 
 module.exports = User;
