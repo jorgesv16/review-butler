@@ -1,5 +1,5 @@
 module.exports = {
-  Phrase: require("./phrase"),
-  Review: require("./review"),
-  User: require("./user")
+  Phrase: require("./Phrase"),
+  Review: require("./Review"),
+  User: require("./User")
 };

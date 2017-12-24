@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var phraseSchema = new Schema({
+var PhraseSchema = new Schema({
   id:  Number,
   writing_style: { type: String, default: null },
   category: { type: String, required: true },
@@ -10,6 +10,6 @@ var phraseSchema = new Schema({
   rating: {type: Number, default: -1 }
 });
 
-const Phrase = mongoose.model("Phrase", phraseSchema);
+const Phrase = mongoose.model("Phrase", PhraseSchema);
 
 module.exports = Phrase;
