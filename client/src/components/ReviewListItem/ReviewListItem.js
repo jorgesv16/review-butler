@@ -1,6 +1,7 @@
 import React from "react";
 import "./ReviewListItem.css";
 import StarIcon from "../../components/StarIcon";
+import Moment from "react-moment";
 
 const ReviewListItem = ({review, onReviewClicked, active}) => {
 	const reviewText = review.text;
@@ -26,7 +27,7 @@ const ReviewListItem = ({review, onReviewClicked, active}) => {
 				</div>
 				<div className="review-item-details">
 					<div className="review-item-heading">
-						<div className="review-item-date float-right">12/20/17</div>
+						<div className="review-item-date float-right"><Moment date={review.review_date} format="MM/DD/YYYY"/></div>
 						<div className="review-item-author">{reviewAuthor}</div>
 					</div>
 					<div className="review-item-rating">
