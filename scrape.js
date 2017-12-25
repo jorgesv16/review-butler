@@ -3,6 +3,7 @@ const db = require("./models");
 const cheerio = require("cheerio");
 const request = require("request");
 const mongoose = require("mongoose");
+const moment = require("moment");
 
 // Set up promises with mongoose
 mongoose.Promise = global.Promise;
@@ -51,9 +52,11 @@ function scrape(business) {
 
       	result.sentences_object = [];
 
-      	result.review_date = $(this)
+      	let reviewDateString = $(this)
       	.find("span.rating-qualifier")
       	.text().trim()
+
+        result.review_date = moment(reviewDateString, "MM/DD/YY").format();
 
       	result.response_date = "";
 

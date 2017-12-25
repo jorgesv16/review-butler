@@ -1,6 +1,5 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import SidebarLink from "../SidebarLink";
 
 import "./Sidebar.css";
 
