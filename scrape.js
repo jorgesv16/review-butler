@@ -5,18 +5,19 @@ const request = require("request");
 const mongoose = require("mongoose");
 const moment = require("moment");
 
-// Set up promises with mongoose
-mongoose.Promise = global.Promise;
-// Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/reviewbutler",
-  {
-    useMongoClient: true
-  }
-);
-
 
 function scrape(business) {
+
+  // Set up promises with mongoose
+  mongoose.Promise = global.Promise;
+  // Connect to the Mongo DB
+  mongoose.connect(
+    process.env.MONGODB_URI || "mongodb://localhost/reviewbutler",
+    {
+      useMongoClient: true
+    }
+  );
+
 	const baseurl = 'https://www.yelp.com/biz/'
   	// First, we grab the body of the html with request
   	request(baseurl+business, function(error, response, html) {
@@ -63,11 +64,11 @@ function scrape(business) {
 
       	result.photos = $(this)
       	.find("li.photo-count")
-      	.text().trim()
+      	.text().trim().split(" ")[0]
 
       	result.rating = $(this)
       	.find("div.i-stars")
-      	.attr("title")
+      	.attr("title").split(" ")[0]
 
       	result.user_name = $(this)
       	.find("a.user-display-name")
@@ -113,7 +114,10 @@ function scrape(business) {
 	    			upsert: true
 	    		})
 	    	.then(function(dbReview) {
-	    		console.log("Scraping...")
+	    		console.log("Scraping...");
+          console.log(dbReview);
+          console.log("closing connection...")
+          mongoose.disconnect();
 	    		return dbReview;
 	    	})
 	    	.catch(function(err) {
@@ -124,12 +128,10 @@ function scrape(business) {
     console.log(resultArray);
 });
 });
-
+return true;
 }
 
 for (var i = 2; i < process.argv.length; i++) {
 	scrape(process.argv[i]);
 	console.log(process.argv[i]);
 }
-
-
