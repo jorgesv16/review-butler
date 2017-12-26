@@ -5,9 +5,14 @@ const mongoose = require("mongoose");
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
+const User = require('./models/user');
 
 // Routes
-const routes = require("./routes");
+const index = require('./routes/index');
+const api = require('./routes/api/index');
+const users = require('./routes/api/users');
+const reviews = require('./routes/api/reviews')
+const authentication = require('./routes/api/authentication');
 
 const app = express();
 
@@ -27,14 +32,16 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
-
 // Serve up static assets
 app.use(express.static("client/build"));
-// Add routes, both API and view
-app.use(routes);
+
+app.use('/api', api);
+app.use('/api/users', users);
+app.use('/api/reviews', reviews);
+app.use('/api/authentication', authentication);
+app.use('/*', index);
 
 // Configure passport
-const User = require('./models/user');
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
