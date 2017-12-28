@@ -21,6 +21,7 @@ const ReviewDetail = ({ review }) => {
 				<p><strong>text: </strong>{review.text}</p>
 				<li><strong>user_name: </strong>{review.user_name}</li>
 				<li><strong>Rating: </strong>{review.Rating}{stars}</li>
+				<li><strong>response_text: </strong>{review.response_text}</li>
 				<li><strong>sentiment_score: </strong>{review.sentiment_score}</li>
 				<li><strong>word_count: </strong>{review.word_count}</li>
 				<li><strong>review_date: </strong><Moment date={review.review_date} format="MM/DD/YYYY"/></li>
