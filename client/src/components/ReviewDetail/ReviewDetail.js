@@ -1,24 +1,34 @@
 import React from "react";
 import "./ReviewDetail.css";
 import StarIcon from "../../components/StarIcon";
+import Sentence from "../../components/Sentence";
 import Moment from "react-moment";
 
 const ReviewDetail = ({ review, onRespondedClicked }) => {
-	if (!review) {
-		return <div>Loading...</div>;
-	}
+    if (!review) {
+        return <div>Loading...</div>;
+    }
 
-	//display a number of StarIcon components based rating (1 - 5)
-	let stars = [];
-	for (var i = review.rating - 1; i >= 0; i--) {
-		 stars.push(<StarIcon key={i}/>);
-	}
+    //display a number of StarIcon components based rating (1 - 5)
+    let stars = [];
+    for (var i = review.rating - 1; i >= 0; i--) {
+        stars.push(<StarIcon key={i}/>);
+    }
 
-	return (
-		<div className="float-md-left">
+    //display the color coded sentences based on sentiment (green = positive, red = negative)
+    let sentences = [];
+    review.sentences_object.forEach(sentence => {
+    	// console.log(`Sentence: ${sentence.text.content}`);
+     //    console.log(`  Score: ${sentence.sentiment.score}`);
+     //    console.log(`  Magnitude: ${sentence.sentiment.magnitude}`);
+    	sentences.push(<Sentence score={sentence.sentiment.score} text={sentence.text.content}/>);
+    });
+
+    return (
+        <div className="float-md-left">
 			<div className="review-container full-height review-detail">
 				<p><strong>title: </strong>{review.title}</p>
-				<p><strong>text: </strong>{review.text}</p>
+				<p><strong>Sentences text: </strong>{sentences}</p>
 				<li><strong>user_name: </strong>{review.user_name}</li>
 				<li><strong>Rating: </strong>{review.Rating}{stars}</li>
 				<li><strong>response_text: </strong>{review.response_text} <button onClick={() => onRespondedClicked(review._id)}>set responded</button></li>
@@ -35,7 +45,7 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 				
 			</div>
 		</div>
-	);
+    );
 };
 
 export default ReviewDetail;
