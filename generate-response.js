@@ -26,8 +26,11 @@ function generateResponse(reviewID) {
             console.log('for (var i', 'for :', i )
             //find a random greeting phrase
              db.Phrase
-            .find({ category: i })    
+            .find({ category: i })
+            .exec()   
             .then(res => {
+              //need to insert logic to pick phrase based on attribute of review (length, rating)
+
                 //select a random response from the phrases
                 const randomIndex = Math.floor(Math.random() * res.length);
                 //this is the first phrase
@@ -38,18 +41,15 @@ function generateResponse(reviewID) {
                   //this is not the first phrase
                    phrases = phrases + ". " + res[randomIndex].text;
                 }
-                //insert logic to pick phrase based on attribute of review (length, rating)
-                console.log('phrases:', phrases);
             })
             .then (function(req, res) {
+              console.log('### Response:', phrases);
               db.Review
                 .findOneAndUpdate({ _id: reviewID }, {response_text: phrases})
-                
                 .catch(err => res.status(422).json(err));
             })
             .catch(err => console.log(err));
             
-
         } 
 
       })
