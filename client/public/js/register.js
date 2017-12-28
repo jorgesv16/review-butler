@@ -6,12 +6,12 @@ $(document).ready(function() {
 
   $('body').on('click', '#register-submit', function() {
 
-    var firstName = $("#signup-firstname").val();
-    var lastName = $("#signup-lastname").val();
-    var email = $("#signup-email").val();
-    var phone = $("#signup-phone").val();
-    var username = $("#signup-username").val();
-    var password = $("#signup-password").val();
+    var firstName = $("#signup-firstname").val().trim();
+    var lastName = $("#signup-lastname").val().trim();
+    var email = $("#signup-email").val().trim();
+    var phone = $("#signup-phone").val().trim();
+    var username = $("#signup-username").val().trim();
+    var password = $("#signup-password").val().trim();
       var userData = {
         "params": {
           "firstName": firstName,

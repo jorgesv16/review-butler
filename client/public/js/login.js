@@ -2,8 +2,8 @@ $(document).ready(function() {
 
   $('body').on('click', '#login-submit', function() {
 
-    var email = $("#login-email").val();
-    var password = $("#login-password").val();
+    var email = $("#login-email").val().trim();
+    var password = $("#login-password").val().trim();
       var userData = {
         "params": {
           "email": email,

@@ -38,6 +38,7 @@ app.use(passport.session());
 
 // Serve up static assets
 app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static("client/build")); <-- INVESTIGATE THIS
 
 app.use('/api', api);
 app.use('/api/users', users);
