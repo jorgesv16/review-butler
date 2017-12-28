@@ -60,5 +60,5 @@ typings/
 .env
 
 #
-controllers/auth.json
+auth.json
 
