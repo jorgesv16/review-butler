@@ -3,6 +3,7 @@ import API from "../../utils/API";
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
 
+
 class Inbox extends Component {
 	constructor(props) {
 		super(props);
@@ -25,13 +26,46 @@ class Inbox extends Component {
 	}
 
 	openReview(id) {
-		// const reviews = this.state.reviews;
-		// const index = reviews.findIndex(x => x._id === id);
-		// reviews[index].read = 'true';
+		//set the review to read in database
+		const currentDate = Date.now();
+		API.updateReview(id, {review_read: currentDate})
+		.catch(err => console.log(err));
+
+		const reviews = this.state.reviews;
+		const index = reviews.findIndex(x => x._id === id);
+		reviews[index].review_read = currentDate;
 		this.setState({
 			selectedReviewID: id,
-			// reviews,
 		});
+	}
+
+	toggleResponded(id) {
+		const reviews = this.state.reviews;
+		const index = reviews.findIndex(x => x._id === id);
+
+		//check if response_date exists, if so set to null
+		if (reviews[index].response_date) {
+			console.log('date exists')
+			API.updateReview(id, {response_date: null})
+			.catch(err => console.log(err));
+			reviews[index].response_date = null;
+		}
+		//the review has no date so set it
+		else {
+			console.log('no date set')
+			const currentDate = Date.now();
+			API.updateReview(id, {response_date: currentDate})
+			.catch(err => console.log(err));
+			reviews[index].response_date = currentDate;
+		}
+		//update the state to refresh page
+		this.setState({
+			selectedReviewID: id,
+			reviews: reviews
+		});
+
+
+
 	}
 
 	render() {
@@ -43,9 +77,11 @@ class Inbox extends Component {
 					reviews={this.state.reviews}
 					onReviewSelected={(id) => { this.openReview(id); }}
 					selectedReviewID={this.state.selectedReviewID}
-					
 				/>
-				<ReviewDetail review={currentReview} />
+				<ReviewDetail 
+					review={currentReview} 
+					onRespondedClicked={(id) => {this.toggleResponded(id);}}
+				/>
 			</div>
 		);
 	}
