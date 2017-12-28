@@ -6,6 +6,9 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
 const User = require('./models/user');
+const path = require("path");
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config');
 
 // Routes
 const index = require('./routes/index');
@@ -13,6 +16,7 @@ const api = require('./routes/api/index');
 const users = require('./routes/api/users');
 const reviews = require('./routes/api/reviews')
 const authentication = require('./routes/api/authentication');
+const templateController = require("./controllers/templateController");
 
 const app = express();
 
@@ -33,12 +37,14 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Serve up static assets
-app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static("client/build")); <-- INVESTIGATE THIS
 
 app.use('/api', api);
 app.use('/api/users', users);
 app.use('/api/reviews', reviews);
 app.use('/api/authentication', authentication);
+app.use("/template", templateController);
 app.use('/*', index);
 
 // Configure passport
