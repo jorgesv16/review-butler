@@ -29,6 +29,8 @@ module.exports = {
   update: function(req, res) {
         console.log('reviewsController - update');
 
+    console.log("params, body:", req.params.id , req.body)
+
     db.Review
       .findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
