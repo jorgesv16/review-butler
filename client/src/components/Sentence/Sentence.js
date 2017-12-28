@@ -1,10 +1,9 @@
 import React from "react";
 import "./Sentence.css";
 
-const ReviewDetail = ({ score, text }) => {
-  console.log('ReviewDetail', 'score:', score, 'text:', text)
+const Sentence = ({ score, text }) => {
     if (!text) {
-        return <div>Loading...</div>;
+        return <span> Review not yet analyzed</span>;
     }
 
     let sentiment;
@@ -15,10 +14,10 @@ const ReviewDetail = ({ score, text }) => {
     }
 
     return (
-        <div className={sentiment}>
+        <span className={sentiment}>
 			{text}
-		</div>
+		</span>
     );
 };
 
-export default ReviewDetail;
+export default Sentence;

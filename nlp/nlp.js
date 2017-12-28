@@ -130,7 +130,7 @@ function getEntities(reviewID) {
 
 //ObjectId("5a44421835f71f0d265c7d30")
 for (var i = 2; i < process.argv.length; i++) {
-    //getSentences(process.argv[i]);
+    getSentences(process.argv[i]);
     getEntities(process.argv[i]);
     console.log(process.argv[i]);
 }
