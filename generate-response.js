@@ -1,56 +1,59 @@
 const db = require("./models");
 const mongoose = require("mongoose");
 
+let phrases = "";
+
 let selectedReview = {};
-let response = "";
+
 
 function generateResponse(reviewID) {
     console.log('***generateResponse, id:', reviewID)
 
-    //Load the review from the database
+    let response = "";
+    //Load the review from the database so we can read attributes (length etc, to generate response)
     console.log('db.Reviews.find())');
     db.Review
         .findById(reviewID)
-        .then(res => {
-            //Select the first review (for now)
-            selectedReview = res;
-            console.log("ReviewText:", selectedReview.text)
-            let response = "";
-
-            db.Phrase
-                .find({ category: "1" })
-                .then(res => {
-                    //select a random response from the phrases
-                    const randomIndex = Math.floor(Math.random() * res.length + 1);
-                    const phrase = res[randomIndex];
-                    console.log('phrase:', phrase.text);
-                    response += phrase.text;
-
-                })
-                .catch(err => console.log(err));
+        .exec()
+        .then(function(review) {
+            //save the review as a variable, so we can do stuff later with it
+            selectedReview = review;
+            //console.log("ReviewText:", selectedReview.text)
+        })
+        .then(function(review) {
+          //iterate through all phrase categories to build a sentence
+          for (var i = 1; i < 5; i++) {
+            console.log('for (var i', 'for :', i )
+            //find a random greeting phrase
+             db.Phrase
+            .find({ category: i })    
+            .then(res => {
+                //select a random response from the phrases
+                const randomIndex = Math.floor(Math.random() * res.length);
+                //this is the first phrase
+                if (res[randomIndex].category === 1) {
+                  phrases = res[randomIndex].text;
+                }
+                else {
+                  //this is not the first phrase
+                   phrases = phrases + ". " + res[randomIndex].text;
+                }
+                //insert logic to pick phrase based on attribute of review (length, rating)
+                console.log('phrases:', phrases);
+            })
+            .then (function(req, res) {
+              db.Review
+                .findOneAndUpdate({ _id: reviewID }, {response_text: phrases})
+                
+                .catch(err => res.status(422).json(err));
+            })
+            .catch(err => console.log(err));
             
-            console.log('response', response);
 
+        } 
 
-        })
+      })
         .catch(err => console.log(err));
-}
-
-function getPhrase(selectedCategory) {
-    console.log('***getPhrase():', selectedCategory)
-    db.Phrase
-        .find({ category: selectedCategory })
-        .then(res => {
-            //select a random response from the phrases
-            const randomIndex = Math.floor(Math.random() * res.length + 1);
-            const phrase = res[randomIndex];
-            console.log('phrase:', phrase.text);
-            return phrase.text;
-
-        })
-        .catch(err => console.log(err));
-
-    return "no phrase found";
 }
 
 
@@ -63,6 +66,10 @@ mongoose.connect(
     }
 );
 
-const TestID = "5a430b55883f4506ef3853c5";
-generateResponse(TestID);
-getPhrase("greeting");
+const TestID = "5a44421835f71f0d265c7d30";
+//const TestID =  5a44421835f71f0d265c7d31
+
+for (var i = 2; i < process.argv.length; i++) {
+  generateResponse(process.argv[i]);
+  console.log(process.argv[i]);
+}
