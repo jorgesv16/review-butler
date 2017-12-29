@@ -200,6 +200,13 @@ section {
 .main-slider .swiper-pagination-bullet-active {
 	background: #304cb2
 }
+
+
+.hero1 {
+	background:url('img/hero2.jpg');
+}
+
+
 /* SERVICE SECTION
 -------------------------------------------------- */
 

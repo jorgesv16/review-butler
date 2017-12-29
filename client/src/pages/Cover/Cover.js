@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 
+const hero1 = {"background":"url('img/hero1.jpg'"};
+
 class Cover extends Component {
+
   render() {
     return (
       <div>
@@ -67,15 +70,15 @@ class Cover extends Component {
         <div className="swiper-container main-slider" id="myCarousel">
           <div className="swiper-wrapper">
             <div
-              className="swiper-slide slider-bg-position"
-
+              className="swiper-slide slider-bg-position" 
+              style={{background: "url('img/hero1.jpg')"}}
               data-hash="slide1"
             >
               <h2>Respond To Online Reviews In Seconds</h2>
             </div>
             <div
-              className="swiper-slide slider-bg-position"
-
+              className="swiper-slide slider-bg-position" 
+              style={{background: "url('img/hero2.jpg')"}}
               data-hash="slide2"
             >
               <h2>Instant smart response templates</h2>
