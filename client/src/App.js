@@ -11,7 +11,7 @@ import Login from "./pages/Login";
 
 // import Sidebar from "./components/Sidebar";
 
-const App = () => (
+const App = (props) => (
 	<Router>
 	<div>
 		<Switch>
