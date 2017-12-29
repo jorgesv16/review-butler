@@ -6,12 +6,12 @@ import Settings from "./pages/Settings";
 import Inbox from "./pages/Inbox";
 import Cover from "./pages/Cover";
 import Signup from "./pages/Signup";
-import Login from "./pages/Login";
+import Login from "./pages/Login/LoginContainer.jsx";
 
 
 // import Sidebar from "./components/Sidebar";
 
-const App = () => (
+const App = (props) => (
 	<Router>
 	<div>
 		<Switch>

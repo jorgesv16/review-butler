@@ -1,3 +1,4 @@
+require('babel-register');
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
@@ -8,7 +9,7 @@ const expressSession = require('express-session');
 const User = require('./models/user');
 const path = require("path");
 const webpack = require('webpack');
-const webpackConfig = require('./webpack.config');
+const webpackConfig = require('./webpack.config.babel');
 
 // Routes
 const index = require('./routes/index');
