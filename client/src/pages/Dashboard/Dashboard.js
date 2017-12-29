@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-
+import Sidebar from "../../components/Sidebar";
 import API from "../../utils/API";
 
-
-class Inbox extends Component {
+class Dashboard extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -26,13 +25,16 @@ class Inbox extends Component {
 
   render() {
     return (
-      <div className="float-md-left">
-         <div className="dashboard-container full-height">
-             Insert Dashboard Here
-         </div>
-     </div>
+      <div>
+        <Sidebar />
+        <div className="float-md-left">
+          <div className="dashboard-container full-height">
+            Insert Dashboard Here
+          </div>
+        </div>
+      </div>
     );
   }
 }
 
-export default Inbox;
+export default Dashboard;
