@@ -27,7 +27,7 @@ class Login extends Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-10 col-md-6 col-lg-4 gradient">
-                <form action="r" method="post" acceptCharset="utf-8" className="form" role="form">
+                <form action="/login" method="post" acceptCharset="utf-8" className="form" role="form">
                   <legend>Login</legend>
                   <br />
                   <input type="text" name="email" className="form-control input-lg" placeholder="Your Email" id="login-email" />

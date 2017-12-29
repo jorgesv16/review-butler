@@ -46,7 +46,7 @@ class Signup extends Component {
                 <div className="container" id="wrap">
                   <div className="row">
                     <div className="col gradient">
-                      <form action="r" method="post" acceptCharset="utf-8" className="form" role="form">
+                      <form action="/register" method="post" acceptCharset="utf-8" className="form" role="form">
                         <legend>Sign Up</legend>
                         <h4>It's free and always will be.</h4>
                         <br/>

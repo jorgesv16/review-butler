@@ -6,6 +6,7 @@ const router = express.Router();
 
 // POST to /register
 router.post('/register', (req, res) => {
+    console.log('Hello')
   // Create a user object to save, using values from incoming JSON
   const newUser = new User(req.body);
   console.log(newUser);
@@ -23,6 +24,7 @@ router.post('/register', (req, res) => {
 
 // POST to /login
 router.post('/login', async (req, res) => {
+
   // look up the user by their email
   const query = User.findOne({ email: req.body.email });
   const foundUser = await query.exec();
