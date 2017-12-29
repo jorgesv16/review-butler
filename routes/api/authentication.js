@@ -1,8 +1,12 @@
 const express = require('express');
+const mongoose = require('mongoose');
 const passport = require('passport');
 const User = require('../../models/user.js');
 
 const router = express.Router();
+
+// configure mongoose promises
+mongoose.Promise = global.Promise;
 
 // POST to /register
 router.post('/register', (req, res) => {
