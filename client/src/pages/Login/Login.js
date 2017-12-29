@@ -12,11 +12,11 @@ class Login extends Component {
             <a className="navbar-brand mx-auto" href="#"><img className="logo" src="img/tux_blue.png" />Review<span>Butler</span></a>
             <div className="collapse navbar-collapse" id="navbarCollapse1">
               <ul className="navbar-nav ml-auto">
-                <li className="nav-item"> <a className="nav-link" href="cover.html#benefits">Features</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="cover.html#about">About</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="cover.html#contact">Team</a> </li>
-                <li className="nav-item"> <a className="nav-link" href="signup.html">Sign Up</a> </li>
-                <li className="nav-item active"> <a className="nav-link" href="login.html">Log In<span className="sr-only">(current)</span></a> </li>
+                <li className="nav-item"> <a className="nav-link" href="/#benefits">Features</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="/#about">About</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="/#contact">Team</a> </li>
+                <li className="nav-item"> <a className="nav-link" href="/signup">Sign Up</a> </li>
+                <li className="nav-item active"> <a className="nav-link" href="/login">Log In<span className="sr-only">(current)</span></a> </li>
               </ul>
             </div>
           </div>
@@ -30,9 +30,9 @@ class Login extends Component {
                 <form action="r" method="post" acceptCharset="utf-8" className="form" role="form">
                   <legend>Login</legend>
                   <br />
-                  <input type="text" name="email" defaultValue className="form-control input-lg" placeholder="Your Email" id="login-email" />
+                  <input type="text" name="email" className="form-control input-lg" placeholder="Your Email" id="login-email" />
                   <br />
-                  <input type="password" name="password" defaultValue className="form-control input-lg" placeholder="Password" id="login-password" />
+                  <input type="password" name="password" className="form-control input-lg" placeholder="Password" id="login-password" />
                   <br />
                   <button className="btn btn-lg btn-primary btn-block signup-btn" type="submit" id="login-submit">
                     Login</button>

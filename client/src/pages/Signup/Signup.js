@@ -19,19 +19,19 @@ class Signup extends Component {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="cover.html#benefits">Features</a>
+                  <a className="nav-link" href="/#benefits">Features</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="cover.html#about">About</a>
+                  <a className="nav-link" href="/#about">About</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="cover.html#contact">Team</a>
+                  <a className="nav-link" href="/#contact">Team</a>
                 </li>
                 <li className="nav-item active">
-                  <a className="nav-link" href="signup.html">Sign Up</a>
+                  <a className="nav-link" href="/signup">Sign Up</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link" href="login.html">Sign In</a>
+                  <a className="nav-link" href="/login">Sign In</a>
                 </li>
               </ul>
             </div>
@@ -53,24 +53,24 @@ class Signup extends Component {
                         <h5>Your details</h5>
                         <div className="row">
                           <div className="col-xs-6 col-md-6">
-                            <input type="text" name="firstname" defaultValue className="form-control input-lg" placeholder="First Name" id="signup-firstname"/>
+                            <input type="text" name="firstname" className="form-control input-lg" placeholder="First Name" id="signup-firstname"/>
                           </div>
                           <div className="col-xs-6 col-md-6">
-                            <input type="text" name="lastname" defaultValue className="form-control input-lg" placeholder="Last Name" id="signup-lastname"/>
+                            <input type="text" name="lastname" className="form-control input-lg" placeholder="Last Name" id="signup-lastname"/>
                           </div>
                         </div>
                         <br/>
-                        <input type="email" name="email" defaultValue className="form-control input-lg" placeholder="Email" id="signup-email"/>
+                        <input type="email" name="email" className="form-control input-lg" placeholder="Email" id="signup-email"/>
                         <br/>
-                        <input type="tel" name="phone" defaultValue className="form-control input-lg" placeholder="Phone" id="signup-phone"/>
+                        <input type="tel" name="phone" className="form-control input-lg" placeholder="Phone" id="signup-phone"/>
                         <br/>
                         <br/>
                         <h5>Account details</h5>
-                        <input type="text" name="username" defaultValue className="form-control input-lg" placeholder="Username" id="signup-username"/>
+                        <input type="text" name="username" className="form-control input-lg" placeholder="Username" id="signup-username"/>
                         <br/>
-                        <input type="password" name="password" defaultValue className="form-control input-lg" placeholder="Password" id="signup=password"/>
+                        <input type="password" name="password" className="form-control input-lg" placeholder="Password" id="signup=password"/>
                         <br/>
-                        <input type="password" name="confirm_password" defaultValue className="form-control input-lg" placeholder="Confirm Password" id="signup-confirm_password"/>
+                        <input type="password" name="confirm_password" className="form-control input-lg" placeholder="Confirm Password" id="signup-confirm_password"/>
                         <br/>
                         <span className="help-block">By clicking Create my account, you agree to our Terms and that you have read our Data Use Policy, including our Cookie Use.</span>
                         <button id="register-submit" className="btn btn-lg btn-primary btn-block signup-btn" type="submit">

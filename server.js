@@ -16,7 +16,6 @@ const api = require('./routes/api/index');
 const users = require('./routes/api/users');
 const reviews = require('./routes/api/reviews')
 const authentication = require('./routes/api/authentication');
-const templateController = require("./controllers/templateController");
 
 const app = express();
 
@@ -44,7 +43,6 @@ app.use('/api', api);
 app.use('/api/users', users);
 app.use('/api/reviews', reviews);
 app.use('/api/authentication', authentication);
-app.use("/template", templateController);
 app.use('/*', index);
 
 // Configure passport

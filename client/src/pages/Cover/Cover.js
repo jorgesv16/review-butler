@@ -50,13 +50,13 @@ class Cover extends Component {
                 </li>
                 <li className="nav-item">
                   {" "}
-                  <a className="nav-link" href="signup.html">
+                  <a className="nav-link" href="/signup">
                     Get Started
                   </a>{" "}
                 </li>
                 <li className="nav-item">
                   {" "}
-                  <a className="nav-link" href="login.html">
+                  <a className="nav-link" href="/login">
                     Sign In
                   </a>{" "}
                 </li>
