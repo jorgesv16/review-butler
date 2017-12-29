@@ -1,16 +1,9 @@
 import React, { Component } from "react";
 
-import API from "../../utils/API";
-
 class Cover extends Component {
   render() {
     return (
       <div>
-        <p className="browserupgrade">
-          You are using an <strong>outdated</strong> browser. Please{" "}
-          <a href="https://browsehappy.com/">upgrade your browser</a> to improve
-          your experience and security.
-        </p>
         <nav className="navbar navbar-expand-lg mb-4 top-bar navbar-static-top sps sps--abv">
           <div className="container">
             <button
@@ -75,14 +68,14 @@ class Cover extends Component {
           <div className="swiper-wrapper">
             <div
               className="swiper-slide slider-bg-position"
-              
+
               data-hash="slide1"
             >
               <h2>Respond To Online Reviews In Seconds</h2>
             </div>
             <div
               className="swiper-slide slider-bg-position"
-              
+
               data-hash="slide2"
             >
               <h2>Instant smart response templates</h2>

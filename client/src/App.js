@@ -5,6 +5,9 @@ import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Inbox from "./pages/Inbox";
 import Cover from "./pages/Cover";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
+
 
 // import Sidebar from "./components/Sidebar";
 import StaticContainer from "./components/StaticContainer";
@@ -14,6 +17,8 @@ const App = () => (
 	<div>
 		<Switch>
 			<Route exact path="/" component={Cover} />
+			<Route exact path="/signup" component={Signup} />
+			<Route exact path="/login" component={Login} />
 			<Route exact path="/dashboard" component={Dashboard} />
 			<Route exact path="/settings" component={Settings} />
 			<Route exact path="/inbox" component={Inbox} />
