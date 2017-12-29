@@ -10,7 +10,6 @@ import Login from "./pages/Login";
 
 
 // import Sidebar from "./components/Sidebar";
-import StaticContainer from "./components/StaticContainer";
 
 const App = () => (
 	<Router>
@@ -22,7 +21,7 @@ const App = () => (
 			<Route exact path="/dashboard" component={Dashboard} />
 			<Route exact path="/settings" component={Settings} />
 			<Route exact path="/inbox" component={Inbox} />
-			<Route name="signup" exact path="/signup" component={StaticContainer} />
+
 		</Switch>
 	</div>
 	</Router>

@@ -18,7 +18,7 @@ class Cover extends Component {
               <span className="navbar-toggler-icon" />
             </button>
             <a className="navbar-brand mx-auto" href="#">
-              <img className="logo" src="img/tux_blue.png" />Review<span>
+              <img className="logo" href="/" src="img/tux_blue.png" />Review<span>
                 Butler
               </span>
             </a>
