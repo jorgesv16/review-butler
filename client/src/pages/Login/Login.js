@@ -2,38 +2,6 @@ import React, {Component} from "react";
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 class Login extends Component {
-
-  constructor(props) {
-    super(props);
-
-    // bound functions
-    this.compileFormData = this.compileFormData.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-
-    // component state
-    this.state = {
-      email: '',
-      password: ''
-    };
-  }
-
-  // update state as email value changes
-  handleEmailChange(e) {
-    this.setState({email: e.target.value});
-  }
-
-  // update state as password value changes
-  handlePasswordChange(e) {
-    this.setState({password: e.target.value});
-  }
-
-  compileFormData() {
-    const {loginFunction} = this.props;
-    const formData = this.state;
-    loginFunction(formData);
-  }
-
   render() {
     return (
       <div>
@@ -75,13 +43,13 @@ class Login extends Component {
                 <Form>
                   <FormGroup>
                     <Label for="userEmail">Email</Label>
-                    <Input className="form-control input-lg" type="email" name="email" id="login-email" placeholder="your@emailaddress.com" value={this.state.email} onChange={this.handleEmailChange}/>
+                    <Input className="form-control input-lg" type="email" name="email" id="login-email" placeholder="your@emailaddress.com" />
                   </FormGroup>
                   <FormGroup>
                     <Label for="userPassword">Password</Label>
-                    <Input className="form-control input-lg" type="password" name="password" id="login-password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                    <Input className="form-control input-lg" type="password" name="password" id="login-password" placeholder="password" />
                   </FormGroup>
-                  <Button className="btn btn-lg btn-primary btn-block signup-btn" id="login-submit" onClick={this.compileFormData}>Login</Button>
+                  <Button className="btn btn-lg btn-primary btn-block signup-btn" id="login-submit" onClick="">Login</Button>
                 </Form>
                 {/* <form action="/login" method="post" acceptCharset="utf-8" className="form" role="form">
                   <legend>Login</legend>

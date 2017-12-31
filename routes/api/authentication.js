@@ -1,57 +1,156 @@
 const express = require('express');
-const mongoose = require('mongoose');
+const validator = require('validator');
 const passport = require('passport');
-const User = require('../../models/user.js');
 
-const router = express.Router();
+const router = new express.Router();
 
-// configure mongoose promises
-mongoose.Promise = global.Promise;
+/**
+ * Validate the sign up form
+ *
+ * @param {object} payload - the HTTP body message
+ * @returns {object} The result of validation. Object contains a boolean validation result,
+ *                   errors tips, and a global message for the whole form.
+ */
+function validateSignupForm(payload) {
+  const errors = {};
+  let isFormValid = true;
+  let message = '';
 
-// POST to /register
-router.post('/register', (req, res) => {
-    console.log('Hello')
-  // Create a user object to save, using values from incoming JSON
-  const newUser = new User(req.body);
-  console.log(newUser);
+  if (!payload || typeof payload.email !== 'string' || !validator.isEmail(payload.email)) {
+    isFormValid = false;
+    errors.email = 'Please provide a correct email address.';
+  }
 
-  // Save, via passport's "register" method, the user
-  User.register(newUser, req.body.password, (err, user) => {
-    // If there's a problem, send back a JSON object with the error
+  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length < 8) {
+    isFormValid = false;
+    errors.password = 'Password must have at least 8 characters.';
+  }
+
+  if (!payload || typeof payload.name !== 'string' || payload.name.trim().length === 0) {
+    isFormValid = false;
+    errors.name = 'Please provide your name.';
+  }
+
+  if (!isFormValid) {
+    message = 'Check the form for errors.';
+  }
+
+  return {
+    success: isFormValid,
+    message,
+    errors
+  };
+}
+
+/**
+ * Validate the login form
+ *
+ * @param {object} payload - the HTTP body message
+ * @returns {object} The result of validation. Object contains a boolean validation result,
+ *                   errors tips, and a global message for the whole form.
+ */
+function validateLoginForm(payload) {
+  const errors = {};
+  let isFormValid = true;
+  let message = '';
+
+  if (!payload || typeof payload.email !== 'string' || payload.email.trim().length === 0) {
+    isFormValid = false;
+    errors.email = 'Please provide your email address.';
+  }
+
+  if (!payload || typeof payload.password !== 'string' || payload.password.trim().length === 0) {
+    isFormValid = false;
+    errors.password = 'Please provide your password.';
+  }
+
+  if (!isFormValid) {
+    message = 'Check the form for errors.';
+  }
+
+  return {
+    success: isFormValid,
+    message,
+    errors
+  };
+}
+
+router.post('/register', (req, res, next) => {
+  const validationResult = validateSignupForm(req.body);
+  if (!validationResult.success) {
+    return res.status(400).json({
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors
+    });
+  }
+
+  return passport.authenticate('local-signup', (err) => {
     if (err) {
-      return res.send(JSON.stringify({ error: err }));
+      if (err.name === 'MongoError' && err.code === 11000) {
+        // the 11000 Mongo code is for a duplication email error
+        // the 409 HTTP status code is for conflict error
+        return res.status(409).json({
+          success: false,
+          message: 'Check the form for errors.',
+          errors: {
+            email: 'This email is already taken.'
+          }
+        });
+      }
+
+      return res.status(400).json({
+        success: false,
+        message: 'Could not process the form.'
+      });
     }
-    // Otherwise, for now, send back a JSON object with the new user's info
-    return res.send(JSON.stringify(user));
-  });
+
+    return res.status(200).json({
+      success: true,
+      message: 'You have successfully signed up! Now you should be able to log in.'
+    });
+  })(req, res, next);
 });
 
-// POST to /login
-router.post('/login', async (req, res) => {
+router.post('/login', (req, res, next) => {
+  const validationResult = validateLoginForm(req.body);
+  if (!validationResult.success) {
+    return res.status(400).json({
+      success: false,
+      message: validationResult.message,
+      errors: validationResult.errors
+    });
+  }
 
-  // look up the user by their email
-  const query = User.findOne({ email: req.body.email });
-  const foundUser = await query.exec();
-  // if they exist, they'll have a username, so add that to our body
-  if (foundUser) { req.body.username = foundUser.username; }
-  passport.authenticate('local')(req, res, () => {
-    console.log(req.user);
-    // If logged in, we should have user info to send back
-    if (req.user) {
-      return res.send(JSON.stringify(req.user));
+  return passport.authenticate('local-login', (err, token, userData) => {
+    if (err) {
+      if (err.name === 'IncorrectCredentialsError') {
+        return res.status(400).json({
+          success: false,
+          message: err.message
+        });
+      }
+
+      return res.status(400).json({
+        success: false,
+        message: 'Could not process the form.'
+      });
     }
-    // Otherwise return an error
-    return res.send(JSON.stringify({ error: 'There was an error logging in' }));
-  });
+
+    return res.json({
+      success: true,
+      message: 'You have successfully logged in!',
+      token,
+      user: userData
+    });
+  })(req, res, next);
 });
 
-
-// GET to /logout
 router.get('/logout', (req, res) => {
-  console.log(req.user);
   req.logout();
-  console.log('If null, user is logged out = ' + req.user);
   return res.send(JSON.stringify(req.user));
 });
+
+
 
 module.exports = router;
