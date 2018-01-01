@@ -76,6 +76,8 @@ function validateLoginForm(payload) {
 }
 
 router.post('/register', (req, res, next) => {
+  console.log("request: " + req)
+  console.log("response: " + req)
   const validationResult = validateSignupForm(req.body);
   if (!validationResult.success) {
     return res.status(400).json({
