@@ -49,7 +49,7 @@ class Login extends Component {
                     <Label for="userPassword">Password</Label>
                     <Input className="form-control input-lg" type="password" name="password" id="login-password" placeholder="password" />
                   </FormGroup>
-                  <Button className="btn btn-lg btn-primary btn-block signup-btn" id="login-submit" onClick="">Login</Button>
+                  <Button className="btn btn-lg btn-primary btn-block signup-btn" id="login-submit">Login</Button>
                 </Form>
                 {/* <form action="/login" method="post" acceptCharset="utf-8" className="form" role="form">
                   <legend>Login</legend>
