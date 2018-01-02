@@ -1,4 +1,46 @@
 .review-detail {
 	background-color: #fff;
-	width: 700px;
+	flex: 1;
+	padding: 50px;
+	font-family: 'Roboto', sans-serif;
 }
+
+.flex-row {
+	display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+}
+.review-title {
+	line-height: 50px;
+	margin: 0px 20px;
+	flex: 2;
+
+}
+
+.review-logo {
+	width: 45px;
+	height: 45px;
+}
+
+.review-date {
+	line-height: 50px;
+	flex: 1;
+
+}
+
+.review-user {
+	margin-left: 65px;
+	opacity: 0.8;
+}
+
+.review-rating {
+	margin-left: 65px;
+}
+
+.review-sentences {
+	
+}
+.review-tags {
+
+}
+
