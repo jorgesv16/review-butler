@@ -20,6 +20,7 @@ module.exports = new PassportLocalStrategy({
 
   // find a user by email address
   return User.findOne({ email: userData.email }, (err, user) => {
+    console.log("HELLO")
     if (err) { return done(err); }
 
     if (!user) {
