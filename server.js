@@ -2,9 +2,7 @@ require('babel-register');
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
-const mongoose = require("mongoose");
 const expressSession = require('express-session');
-const User = require('./models/user');
 const path = require("path");
 const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.babel');
@@ -50,10 +48,8 @@ app.use('/api/authentication', authentication);
 app.use('/api/authcheck', authCheckMiddleware); // <-- should be /api not api/authcheck
 app.use('/*', index);
 
-
-// Set up promises with mongoose
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-// Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/reviewbutler",
   {

@@ -1,5 +1,8 @@
 import React, {Component} from "react";
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import Login from "../../pages/Login";
+import should from 'should';
 
 class Signup extends Component {
 constructor(props, context) {
@@ -36,6 +39,7 @@ constructor(props, context) {
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
+        console.log("succesful POST request - New User has signed up")
         // success
 
         // change the component-container state
@@ -45,9 +49,26 @@ constructor(props, context) {
 
         // set a message
         localStorage.setItem('successMessage', xhr.response.message);
+/*
 
+
+
+
+
+NEED TO FIX THIS (redirect below)
+
+
+
+
+
+*/
         // make a redirect
-        this.context.router.replace('/login');
+         // this.context.router.replace('/login');
+         <Switch>
+           <Redirect from='/signup' to='/login'/>
+           <Route path='/login' component={Login}/>
+         </Switch>
+
       } else {
         // failure
 
@@ -59,6 +80,7 @@ constructor(props, context) {
         });
       }
     });
+    console.log(formData)
     xhr.send(formData);
   }
 
