@@ -2,8 +2,12 @@ const express = require('express');
 const validator = require('validator');
 const passport = require('passport');
 const User = require('../../models/user')
+const mongoose = require('mongoose');
 
 const router = new express.Router();
+
+mongoose.Promise = global.Promise;
+
 
 // /**
 //  * Validate the sign up form
@@ -130,57 +134,61 @@ router.post('/register', (req, res) => {
 });
 
 
-// router.post('/login', (req, res, next) => {
-//   const validationResult = validateLoginForm(req.body);
-//   if (!validationResult.success) {
-//     return res.status(400).json({
-//       success: false,
-//       message: validationResult.message,
-//       errors: validationResult.errors
-//     });
-//   }
-//
-//   return passport.authenticate('local-login', (err, token, userData) => {
-//     if (err) {
-//       if (err.name === 'IncorrectCredentialsError') {
-//         return res.status(400).json({
-//           success: false,
-//           message: err.message
-//         });
-//       }
-//
-//       return res.status(400).json({
-//         success: false,
-//         message: 'Could not process the form.'
-//       });
-//     }
-//
-//     return res.json({
-//       success: true,
-//       message: 'You have successfully logged in!',
-//       token,
-//       user: userData
-//     });
-//   })(req, res, next);
-// });
+router.post('/login', (req, res, next) => {
+  // const validationResult = validateLoginForm(req.body);
+  // if (!validationResult.success) {
+  //   return res.status(400).json({
+  //     success: false,
+  //     message: validationResult.message,
+  //     errors: validationResult.errors
+  //   });
+  // }
 
-router.post('/login', async (req, res) => {
+   passport.authenticate('local-login', (err, token, userData) => {
+    if (err) {
+      if (err.name === 'IncorrectCredentialsError') {
+        return res.status(400).json({
+          success: false,
+          message: err.message
+        });
+      }
 
-  // look up the user by their email
-  const query = User.findOne({ email: req.body.email });
-  const foundUser = await query.exec();
-  // if they exist, they'll have a username, so add that to our body
-  if (foundUser) { req.body.username = foundUser.username; }
-  passport.authenticate('local')(req, res, () => {
-    console.log(req.user);
-    // If logged in, we should have user info to send back
-    if (req.user) {
-      return res.send(JSON.stringify(req.user));
+      return res.status(400).json({
+        success: false,
+        message: 'Could not process the form.'
+      });
     }
-    // Otherwise return an error
-    return res.send(JSON.stringify({ error: 'There was an error logging in' }));
-  });
+
+    console.log("SUCCESS - YOU ARE LOGGED IN!!");
+    console.log(userData);
+    console.log(token)
+    return res.json({
+      success: true,
+      message: 'You have successfully logged in!',
+      token,
+      user: userData
+    });
+  })(req, res, next);
 });
+
+// router.post('/login', async (req, res) => {
+//   console.log(req.body);
+//
+//   // look up the user by their email
+//   const query = User.findOne({ email: req.body.email });
+//   const foundUser = await query.exec();
+//   // if they exist, they'll have a username, so add that to our body
+//   if (foundUser) { req.body.username = foundUser.username; }
+//   passport.authenticate('local-login')(req, res, () => {
+//     console.log(req.user);
+//     // If logged in, we should have user info to send back
+//     if (req.user) {
+//       return res.send(JSON.stringify(req.user));
+//     }
+//     // Otherwise return an error
+//     return res.send(JSON.stringify({ error: 'There was an error logging in' }));
+//   });
+// });
 
 router.get('/logout', (req, res) => {
   req.logout();

@@ -45,7 +45,7 @@ app.use('/api', api);
 app.use('/api/users', users);
 app.use('/api/reviews', reviews);
 app.use('/api/authentication', authentication);
-app.use('/api/authcheck', authCheckMiddleware); // <-- should be /api not api/authcheck
+app.use('/api', authCheckMiddleware); // <-- should be /api not api/authcheck
 app.use('/*', index);
 
 const mongoose = require('mongoose');

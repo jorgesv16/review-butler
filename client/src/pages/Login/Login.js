@@ -46,7 +46,7 @@ class Login extends Component {
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
+    xhr.open('post', 'api/authentication/login');
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
     xhr.responseType = 'json';
     xhr.addEventListener('load', () => {
@@ -60,7 +60,7 @@ class Login extends Component {
         Auth.authenticateUser(xhr.response.token);
 
         // change the current URL to /
-        this.context.router.replace('/');
+        // this.context.router.replace('/');
       } else {
         // failure
 
