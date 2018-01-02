@@ -1,12 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+// import routes from "./routes.js";
 
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
 import Inbox from "./pages/Inbox";
 import Cover from "./pages/Cover";
 import Signup from "./pages/Signup";
-import Login from "./pages/Login/LoginContainer.jsx";
+import Login from "./pages/Login";
+
 
 
 // import Sidebar from "./components/Sidebar";
@@ -21,7 +23,6 @@ const App = (props) => (
 			<Route exact path="/dashboard" component={Dashboard} />
 			<Route exact path="/settings" component={Settings} />
 			<Route exact path="/inbox" component={Inbox} />
-
 		</Switch>
 	</div>
 	</Router>
