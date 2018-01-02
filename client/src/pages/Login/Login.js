@@ -74,6 +74,7 @@ class Login extends Component {
       }
     });
     console.log(formData)
+    console.log(xhr.response)
     xhr.send(formData);
   }
 
