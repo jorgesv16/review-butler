@@ -25,7 +25,7 @@ const client = new language.LanguageServiceClient();
 
 
 db.User
-  .find()
+  .find({business_id : {$ne: ""}})
   .then(function(userData) {
     console.log(userData);
     for (var i = 0; i < userData.length; i++) {
