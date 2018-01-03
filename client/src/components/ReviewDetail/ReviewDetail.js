@@ -5,7 +5,7 @@ import ResponseField from "../../components/ResponseField";
 import Sentence from "../../components/Sentence";
 import Tag from "../../components/Tag";
 import RaisedButton from "material-ui/RaisedButton";
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 import TextField from "material-ui/TextField";
 
@@ -55,7 +55,7 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 	const response = review.response_text;
 
 	return (
-		<div className="review-container full-height review-detail">
+		<div className="full-height review-detail">
 			<div className="flex-row">
 				<div className="review-user">
 					<h4>{review.user_name}</h4>
@@ -108,10 +108,8 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 				onClick={() => onRespondedClicked(review._id)}
 			/>
 
-			<li>
-				<strong>business_id: </strong>
-				{review.business_id}
-			</li>
+			<strong>business_id: </strong>
+			{review.business_id}
 		</div>
 	);
 };

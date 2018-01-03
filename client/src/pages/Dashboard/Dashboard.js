@@ -1,9 +1,25 @@
 import React, { Component } from "react";
-import Moment from 'moment';
+import Moment from "moment";
 import API from "../../utils/API";
+import Sidebar from "../../components/Sidebar";
 import StarIcon from "../../components/StarIcon";
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, Legend, ReferenceLine, Label, BarChart, Bar } from "recharts";
+import {
+  ResponsiveContainer,
+  LineChart,
+  Line,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ReferenceLine,
+  Label,
+  BarChart,
+  Bar
+} from "recharts";
 //import Graph from "../../components/Graph";
+
+import "./Dashboard.css";
 
 class Dashboard extends Component {
   constructor(props) {
@@ -22,7 +38,6 @@ class Dashboard extends Component {
           reviews: res.data,
           selectedReview: res.data[0]
         })
-
       )
       .catch(err => console.log(err));
   }
@@ -38,62 +53,99 @@ class Dashboard extends Component {
       data.push(mini);
     }
     var average = totalRating / this.state.reviews.length;
+    var averageStars = Math.floor(totalRating / this.state.reviews.length);
     var ones = 0;
     var twos = 0;
     var threes = 0;
     var fours = 0;
     var fives = 0;
     for (var j = 0; j < data.length; j++) {
-      if(data[j].value == 1) {
-          ones++;
-      } 
-      if(data[j].value == 2) {
+      if (data[j].value == 1) {
+        ones++;
+      }
+      if (data[j].value == 2) {
         twos++;
       }
-      if(data[j].value == 3) {
+      if (data[j].value == 3) {
         threes++;
       }
-      if(data[j].value == 4) {
+      if (data[j].value == 4) {
         fours++;
       }
-      if(data[j].value == 5) {
+      if (data[j].value == 5) {
         fives++;
       }
     }
     var data2 = [];
     data2.push(
-      {name: "1 Star", count: ones}, 
-      {name: "2 Stars", count: twos}, 
-      {name: "3 Stars", count: threes}, 
-      {name: "4 Stars", count: fours}, 
-      {name: "5 Stars", count: fives}
+      { name: "1 Star", count: ones },
+      { name: "2 Stars", count: twos },
+      { name: "3 Stars", count: threes },
+      { name: "4 Stars", count: fours },
+      { name: "5 Stars", count: fives }
     );
-    
+
+    //render the average star rating with star icons
+    let stars = [];
+    for (var i = averageStars - 1; i >= 0; i--) {
+      stars.push(<StarIcon key={i} size="large" />);
+    }
+
     return (
-      <div className="float-md-left">
-         <div className="dashboard-container full-height">
-              <div>Average Star Rating: {average} -- See Green Line</div>
-               <LineChart width={1000} height={600} data={data}>
-                  <XAxis dataKey="name" >
-                    <Label value="Most Recent Reviews" offset={535} position="top" />
-                  </XAxis>
-                  <YAxis type="number" domain={[0, 'dataMax']} padding={{ top: 50}} scale="linear" >
-                    <Label value="Star Rating" offset={5} position="insideLeft" width={20}/>
-                  </YAxis>
-                  <CartesianGrid stroke="#eee" strokeDasharray="5 5"/>
-                  <ReferenceLine y={average} stroke="green" strokeDasharray="3 3" />
-                  <Line type="monotone" dataKey="value" stroke="#8884d8" />
-                </LineChart>
-                <BarChart width={1000} height={600} data={data2}>
-                  <CartesianGrid strokeDasharray="3 3" />
-                  <XAxis dataKey="name" />
-                  <YAxis />
-                  <Tooltip />
-                  <Legend />
-                  <Bar dataKey="count" fill="#8884d8" />
-                </BarChart>
-         </div>
-     </div>
+      <div>
+        <div className="flex-wrapper">
+          <div class="columns">
+            <Sidebar />
+            <div className="full-height dashboard-detail">
+            <h2>Dashboard</h2>
+            <div className="star-rating">Average Star Rating: {stars}</div>
+              <div className="flex-row">
+                <ResponsiveContainer width="45%" aspect={4.0 / 3.0} className="graph-box">
+                  <LineChart data={data}>
+                    <XAxis dataKey="name">
+                      <Label
+                        value="Most Recent Reviews"
+                        offset={535}
+                        position="top"
+                      />
+                    </XAxis>
+                    <YAxis
+                      type="number"
+                      domain={[0, "dataMax"]}
+                      padding={{ top: 50 }}
+                      scale="linear"
+                    >
+                      <Label
+                        value=""
+                        offset={5}
+                        position="insideLeft"
+                        width={20}
+                      />
+                    </YAxis>
+                    <CartesianGrid stroke="#eee" strokeDasharray="5 5" />
+                    <ReferenceLine
+                      y={average}
+                      stroke="green"
+                      strokeDasharray="3 3"
+                    />
+                    <Line type="monotone" dataKey="value" stroke="#8884d8" />
+                  </LineChart>
+                </ResponsiveContainer>
+
+                <ResponsiveContainer width="45%" aspect={4.0 / 3.0} className="graph-box">
+                  <BarChart data={data2}>
+                    <CartesianGrid strokeDasharray="3 3" />
+                    <XAxis dataKey="name" />
+                    <YAxis />
+                    <Tooltip />
+                    <Bar dataKey="count" fill="#8884d8" />
+                  </BarChart>
+                </ResponsiveContainer>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }

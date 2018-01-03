@@ -1,17 +1,31 @@
-.review-detail {
-   background-color: #fff;
-   flex: 1;
-   padding: 50px;
-   font-family: 'Roboto', sans-serif;
+
+.flex-wrapper {
+    background-color: #eee;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #0c132d;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-.flex-row {
-   display: flex;
-   flex-direction: row;
-   justify-content: flex-start;
+
+.columns{
+  display: flex;
 }
 
-.signup-sec {
-	float: top;
-	height: 100vh;
+.settings-detail {
+    background-color: #e2e1e0;
+    flex: 1;
+    padding: 25px;
+}
+
+.full-height {
+    height: 100vh;
+    overflow-y: scroll;
+}
+
+.blue-bg {
+	background: #304cb2;
+	color: white;
+	padding: 50px;
 }
