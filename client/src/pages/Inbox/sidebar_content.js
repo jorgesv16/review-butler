@@ -39,7 +39,7 @@ const SidebarContent = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
 
   return (
-    <MaterialTitlePanel title="ReviewButler" style={style}>
+    <MaterialTitlePanel title="Menu" style={style}>
       <div className='sidebar full-height'>
             <div className='logo-container'>
                 <img className='logo-image' src='img/tux.png' alt="Review Butler Logo" />

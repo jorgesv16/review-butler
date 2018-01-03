@@ -16,3 +16,7 @@
 .columns{
   display: flex;
 }
+
+.no-scroll {
+    overflow-y: hidden;
+}

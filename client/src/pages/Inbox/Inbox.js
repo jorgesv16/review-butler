@@ -9,7 +9,7 @@ import SidebarContent from './sidebar_content';
 
 import "./Inbox.css";
 
-const mql = window.matchMedia(`(min-width: 800px)`);
+const mql = window.matchMedia(`(min-width: 950px)`);
 
 //sidebar styles
 const styles = {
@@ -21,6 +21,9 @@ const styles = {
   content: {
     padding: '16px',
   },
+  spanBlue: {
+  	color:"#304cb2",
+  }
 };
 
 class Inbox extends Component {
@@ -129,7 +132,7 @@ class Inbox extends Component {
       <span>
         {!this.state.docked &&
          <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>}
-        <span> Respond To Reviews Fast </span>
+        <span> Review</span><span style={styles.spanBlue}>Butler </span>
       </span>);
 
     const sidebarProps = {
@@ -143,6 +146,7 @@ class Inbox extends Component {
 			x => x._id === this.state.selectedReviewID
 		);
 		return (
+			<div className='no-scroll'>
 		<SidebarReact {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
           <div className="flex-wrapper">
@@ -162,21 +166,9 @@ class Inbox extends Component {
 						/>
 					</div>	
 			</div>
-			          <div style={styles.content}>
-            <p>
-              This example will automatically dock the sidebar if the page
-              width is above 800px (which is currently {'' + this.state.docked}).
-            </p>
-            <p>
-              This functionality should live in the component that renders the sidebar.
-              This way you're able to modify the sidebar and main content based on the
-              responsiveness data. For example, the menu button in the header of the
-              content is now {this.state.docked ? 'hidden' : 'shown'} because the sidebar
-              is {!this.state.docked && 'not'} visible.
-            </p>
-          </div>
         </MaterialTitlePanel>
       </SidebarReact>
+      </div>
 			
 		);
 	}
