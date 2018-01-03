@@ -180,5 +180,3 @@ class Inbox extends Component {
 }
 
 export default Inbox;
-
-//selectedReview => this.setState({selectedReview: null})
