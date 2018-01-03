@@ -1,7 +1,7 @@
 import React from "react";
 import "./ReviewDetail.css";
 import StarIcon from "../../components/StarIcon";
-import ResponseField from "../../components/ResponseField";
+// import ResponseField from "../../components/ResponseField";
 import Sentence from "../../components/Sentence";
 import Tag from "../../components/Tag";
 import RaisedButton from "material-ui/RaisedButton";
