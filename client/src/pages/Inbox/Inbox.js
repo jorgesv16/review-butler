@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
 
 
-// import Sidebar from "../../components/Sidebar";
 import SidebarReact from "../../components/Sidebar2";
 import SidebarContent from '../../components/Sidebar2/sidebar_content';
 import MaterialTitlePanel from '../../components/Sidebar2/material_title_panel';
@@ -155,7 +155,7 @@ class Inbox extends Component {
 		<SidebarReact {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
           <div className="flex-wrapper">
-		    	<div class="columns">
+		    	<div className="columns">
 						<ReviewList
 							reviews={this.state.reviews}
 							onReviewSelected={id => {

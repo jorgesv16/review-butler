@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Moment from "moment";
 import API from "../../utils/API";
 import Sidebar from "../../components/Sidebar";
 import StarIcon from "../../components/StarIcon";
@@ -11,7 +10,6 @@ import {
   XAxis,
   YAxis,
   Tooltip,
-  Legend,
   ReferenceLine,
   Label,
   BarChart,
@@ -47,7 +45,7 @@ class Dashboard extends Component {
     var totalRating = 0;
     for (var i = 0; i < this.state.reviews.length; i++) {
       totalRating += this.state.reviews[i].rating;
-      var mini = new Object();
+      var mini = {};
       mini.name = i + 1;
       mini.value = this.state.reviews[i].rating;
       data.push(mini);
@@ -61,19 +59,19 @@ class Dashboard extends Component {
     var fours = 0;
     var fives = 0;
     for (var j = 0; j < data.length; j++) {
-      if (data[j].value == 1) {
+      if (data[j].value === 1) {
         ones++;
       }
-      if (data[j].value == 2) {
+      if (data[j].value === 2) {
         twos++;
       }
-      if (data[j].value == 3) {
+      if (data[j].value === 3) {
         threes++;
       }
-      if (data[j].value == 4) {
+      if (data[j].value === 4) {
         fours++;
       }
-      if (data[j].value == 5) {
+      if (data[j].value === 5) {
         fives++;
       }
     }
@@ -88,14 +86,14 @@ class Dashboard extends Component {
 
     //render the average star rating with star icons
     let stars = [];
-    for (var i = averageStars - 1; i >= 0; i--) {
-      stars.push(<StarIcon key={i} size="large" />);
+    for (var k = averageStars - 1; k >= 0; k--) {
+      stars.push(<StarIcon key={k} size="large" />);
     }
 
     return (
       <div>
         <div className="flex-wrapper">
-          <div class="columns">
+          <div className="columns">
             <Sidebar />
             <div className="full-height dashboard-detail">
             <h2>Dashboard</h2>
