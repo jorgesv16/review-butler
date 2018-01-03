@@ -90,7 +90,7 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 			<TextField
 				multiLine={true}
 				fullWidth={true}
-				value={review.response_text}
+				value="aaa"
 			/>
 			<br />
 			<div className="d-inline">

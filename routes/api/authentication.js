@@ -126,10 +126,15 @@ router.post('/register', (req, res) => {
   User.register(newUser, req.body.password, (err, user) => {
     // If there's a problem, send back a JSON object with the error
     if (err) {
+      console.log("err");
+      console.log(err);
       return res.send(JSON.stringify({ error: err }));
     }
+    else {
+      console.log("sucess")
     // Otherwise, for now, send back a JSON object with the new user's info
     return res.send(JSON.stringify(user));
+  }
   });
 });
 
@@ -141,15 +146,25 @@ router.post('/login', async (req, res) => {
   const query = User.findOne({ email: req.body.email });
   const foundUser = await query.exec();
   // if they exist, they'll have a username, so add that to our body
-  if (foundUser) { req.body.username = foundUser.username; }
-  console.log(foundUser)
+  if (foundUser) { 
+    req.body.username = foundUser.username; 
+    req.body.token = foundUser._id;
+  }
+  console.log(foundUser);
+  console.log(req.body);
   passport.authenticate('local-login')(req, res, () => {
+    console.log("req", res.body);
+    // console.log("res", res);
     // If logged in, we should have user info to send back
-    if (req.user) {
-      return res.send(JSON.stringify(req.user));
+    if (req._body) {
+      console.log("success");
+      return res.send(JSON.stringify(req.body));
     }
+    else {
     // Otherwise return an error
+    console.log("error");
     return res.send(JSON.stringify({ error: 'There was an error logging in' }));
+  }
   });
 });
 
