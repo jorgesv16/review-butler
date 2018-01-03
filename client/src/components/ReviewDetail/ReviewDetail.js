@@ -1,3 +1,4 @@
+import API from "../../utils/API";
 import React, { Component } from "react";
 import "./ReviewDetail.css";
 import StarIcon from "../../components/StarIcon";
@@ -19,9 +20,14 @@ class ReviewDetail extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({
-			responseText:nextProps.review.response_text
-		})
+			responseText: nextProps.review.response_text
+		});
+	}
 
+	updateResponseText(newText) {
+		const reviewID = this.props.review._id;
+		this.props.review.response_text = newText;
+		API.updateReview(reviewID, { response_text: newText });
 	}
 
 	render() {
@@ -33,7 +39,6 @@ class ReviewDetail extends Component {
 			return <div>Loading...</div>;
 		} else {
 			// const responseText = review.response_text;
-
 		}
 
 		//display a number of StarIcon components based rating (1 - 5)
@@ -73,7 +78,7 @@ class ReviewDetail extends Component {
 		});
 
 		const response = review.response_text;
-		console.log('response', response)
+		console.log("response", response);
 
 		return (
 			<div className="full-height review-detail">
@@ -109,15 +114,17 @@ class ReviewDetail extends Component {
 				<br />
 				<h2>Response</h2>
 				<TextField
+					id={review._id}
 					multiLine={true}
 					fullWidth={true}
 					value={this.state.responseText}
-					onChange={(e, responseText) =>
-						this.setState({ responseText })
-					}
+					onChange={(e, responseText) => {
+						this.setState({ responseText });
+						this.updateResponseText(responseText);
+					}}
 				/>
 				<br />
-				<div className="d-inline">
+				<div>
 					Responded:{" "}
 					{review.response_date ? (
 						<Moment
@@ -128,6 +135,19 @@ class ReviewDetail extends Component {
 						"No"
 					)}{" "}
 				</div>
+				<CopyToClipboard
+					text={this.state.responseText}
+					onCopy={() => this.setState({ copied: true })}
+				>
+					<RaisedButton
+						label="Copy & Open Yelp"
+						className="btn-space"
+						onClick={() =>
+							window.open("https://biz.yelp.com/login", "_blank")
+						}
+					/>
+				</CopyToClipboard>
+
 				<RaisedButton
 					label={
 						review.response_date
@@ -135,10 +155,8 @@ class ReviewDetail extends Component {
 							: "Mark Responded"
 					}
 					onClick={() => onRespondedClicked(review._id)}
+					className="btn-space"
 				/>
-
-				<strong>business_id: </strong>
-				{review.business_id}
 			</div>
 		);
 	}
