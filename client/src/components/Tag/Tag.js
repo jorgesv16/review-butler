@@ -1,24 +1,30 @@
 import React from "react";
 import "./Tag.css";
+import Chip from 'material-ui/Chip';
 
 const Tag = ({ score, salience, name }) => {
+
+    const styles = {
+  chip: {
+    margin: 4,
+  }
+};
 
     if (!name) {
         return <div>Loading...</div>;
     }
 
-    let sentiment;
+    let bgColor;
     if (score > 0.5) {
-        sentiment = "positive"
+        bgColor = "#4c8c4a"
     } else if (score < -0.5) {
-        sentiment = "negative"
+        bgColor = "#f9683a"
     }
     return (
 
-        <button className={sentiment}>
+        <Chip backgroundColor={bgColor} style={styles.chip}>
 			{name}
-            {console.log("found a tag")}
-		</button>
+		</Chip>
     );
 };
 
