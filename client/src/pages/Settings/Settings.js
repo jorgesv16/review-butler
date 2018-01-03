@@ -6,8 +6,14 @@ import "./Settings.css";
 class Settings extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-  }
+    this.state = {
+      displayName: '',
+      email: '',
+      phone: '',
+      occupation: '',
+      password: ''
+    };
+  };
 
   render() {
     return (
@@ -27,19 +33,19 @@ class Settings extends Component {
                       user={this.state.user}
                       action="/login">
                       <FormGroup>
-                        <Label for="userEmail">Display Name</Label>
+                        <Label for="displayName">Display Name</Label>
                         <Input className="form-control input-lg" type="email" name="name" id="login-email" placeholder=""/>
                       </FormGroup>
                       <FormGroup>
-                        <Label for="userPassword">Email</Label>
+                        <Label for="userEmail">Email</Label>
                         <Input className="form-control input-lg" type="email" name="email" id="login-email" placeholder=""/>
                       </FormGroup>
                       <FormGroup>
-                        <Label for="userPassword">Phone</Label>
+                        <Label for="userPhone">Phone</Label>
                         <Input className="form-control input-lg" type="phone" name="password" id="login-password" placeholder=""/>
                       </FormGroup>
                       <FormGroup>
-                        <Label for="userPassword">Occupation</Label>
+                        <Label for="occupation">Occupation</Label>
                         <Input className="form-control input-lg" type="text" name="password" id="login-password" placeholder=""/>
                       </FormGroup>
                       <FormGroup check>
@@ -48,6 +54,18 @@ class Settings extends Component {
                           Display occupation on responses
                         </Label>
                       </FormGroup>
+
+                      <Form inline>
+                        <FormGroup>
+                          <Label for="userPassword">Change Password</Label>
+                          <Input className="form-control input-lg" type="text" name="password" id="login-password" placeholder="Password"/>
+                        </FormGroup>
+                        <FormGroup>
+                          <Label for="userPassword"> </Label>
+                          <Input className="form-control input-lg" type="text" name="password" id="login-password" placeholder="Repeat Password"/>
+                        </FormGroup>
+                      </Form>
+
                       <Button className="btn btn-lg btn-primary btn-block signup-btn" id="submit">Save</Button>
                     </Form>
                   </Col>

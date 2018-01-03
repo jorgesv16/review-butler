@@ -12,6 +12,6 @@
 }
 
 .signup-sec {
-	float: top;
 	height: 100vh;
+	top: -82px;
 }

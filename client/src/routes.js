@@ -23,10 +23,10 @@ const routes = {
       }
     },
 
-    // {
-    //   path: '/settings',
-    //   component: Settings
-    // },
+    {
+      path: '/settings',
+      component: Settings
+    },
 
     {
       path: '/inbox',
