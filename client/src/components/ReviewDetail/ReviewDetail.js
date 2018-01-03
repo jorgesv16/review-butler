@@ -1,8 +1,12 @@
 import React from "react";
 import "./ReviewDetail.css";
 import StarIcon from "../../components/StarIcon";
+import ResponseField from "../../components/ResponseField";
 import Sentence from "../../components/Sentence";
 import Tag from "../../components/Tag";
+import RaisedButton from "material-ui/RaisedButton";
+import {CopyToClipboard} from 'react-copy-to-clipboard';
+
 import TextField from "material-ui/TextField";
 
 import Moment from "react-moment";
@@ -49,12 +53,12 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 	});
 
 	const response = review.response_text;
-	
+
 	return (
 		<div className="review-container full-height review-detail">
 			<div className="flex-row">
 				<div className="review-user">
-				<h4>{review.user_name}</h4>
+					<h4>{review.user_name}</h4>
 				</div>
 			</div>
 			<div className="flex-row">
@@ -64,8 +68,7 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 					alt="Yelp Logo"
 				/>
 				<div className="review-title">
-				<h2>{review.title ? review.title : "No Title"}</h2>
-					{review.title}
+					<h2>{review.title ? review.title : "No Title"}</h2>
 				</div>
 				<div className="review-date">
 					<Moment date={review.review_date} format="MM/DD/YYYY" />
@@ -74,34 +77,41 @@ const ReviewDetail = ({ review, onRespondedClicked }) => {
 			<div className="review-rating">
 				<h4>{stars}</h4>
 			</div>
-			<div className="review-text">{sentences}</div>
-			<div className="flex-row">
-				<div className="review-tags"><span className="tags-title">Tags: </span> {tags}</div>
+			<div className="review-text">
+				{sentences[0] ? sentences : review.text}
 			</div>
-			<br/>
+			<div className="flex-row">
+				<div className="review-tags">
+					<span className="tags-title">Tags: </span> {tags}
+				</div>
+			</div>
+			<br />
 			<h2>Response</h2>
 			<TextField
 				multiLine={true}
 				fullWidth={true}
-				value={response}
+				value={review.response_text}
 			/>
 			<br />
-			<button onClick={() => onRespondedClicked(review._id)}>
-				set responded
-			</button>
-			<li>
-				<strong>sentiment_score: </strong>
-				{review.sentiment_score}
-			</li>
-			<li>
-				<strong>response_date: </strong>
-				{review.response_date}
-			</li>
+			<div className="d-inline">
+				Responded:{" "}
+				{review.response_date ? (
+					<Moment date={review.response_date} format="MM/DD/YYYY" />
+				) : (
+					"No"
+				)}{" "}
+			</div>
+			<RaisedButton
+				label={
+					review.response_date ? "Mark Unresponded" : "Mark Responded"
+				}
+				onClick={() => onRespondedClicked(review._id)}
+			/>
+
 			<li>
 				<strong>business_id: </strong>
 				{review.business_id}
 			</li>
-
 		</div>
 	);
 };
