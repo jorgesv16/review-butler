@@ -68,14 +68,14 @@ class Cover extends Component {
         <div className="swiper-container main-slider" id="myCarousel">
           <div className="swiper-wrapper">
             <div
-              className="swiper-slide slider-bg-position" 
+              className="swiper-slide slider-bg-position"
               style={{background: "url('img/hero1.jpg')"}}
               data-hash="slide1"
             >
               <h2>Respond To Online Reviews In Seconds</h2>
             </div>
             <div
-              className="swiper-slide slider-bg-position" 
+              className="swiper-slide slider-bg-position"
               style={{background: "url('img/hero2.jpg')"}}
               data-hash="slide2"
             >
@@ -103,41 +103,29 @@ class Cover extends Component {
               </div>
               <div className="col-md-8">
                 <div className="row">
-                  <div className="col-md-6 text-sm-center service-block">
-                    {" "}
-                    <i className="fa fa-plus" aria-hidden="true" />
-                    <h3>Smart Alerts</h3>
-                    <p>Get notified when you have new reviews that attention</p>
-                  </div>
-                  <div className="col-md-6 text-sm-center service-block">
-                    {" "}
-                    <i className="fa fa-leaf" aria-hidden="true" />
-                    <h3>Smart Responses</h3>
-                    <p>
-                      Responses automatically generated so you can reply in
-                      record time
-                    </p>
-                  </div>
-                  <div className="col-md-6 text-sm-center service-block">
-                    {" "}
-                    <i className="fa fa-leaf" aria-hidden="true" />
-                    <h3>Feature 3</h3>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Fusce tortor ante, auctor nec nunc quis.
-                    </p>
-                  </div>
-                  <div className="col-md-6 text-sm-center service-block">
-                    {" "}
-                    <i className="fa fa-bell" aria-hidden="true" />
-                    <h3>Feature 4</h3>
-                    <p>
-                      {" "}
-                      Sed pharetra purus ipsum, ut sagittis orci venenatis nec.
-                      Suspendisse potenti. Ut egestas ullamcorper tristique.
-                      Cras nec enim et leo bibendum tempus.
-                    </p>
-                  </div>
+                <div className="col-md-6 text-sm-center service-block">
+                <h3>Smart Responses</h3>
+                <p>
+                  Your review butler intelligently interprets reviews based on sentiment and responds using <b>your</b> personality style accordingly.
+                </p>
+              </div>
+              <div className="col-md-6 text-sm-center service-block">
+                <h3>Automated Responses</h3>
+                <p>
+                  Responses automatically generated so you can reply to your customers in
+                  record time.
+                </p>
+              </div>
+              <div className="col-md-6 text-sm-center service-block">
+                <h3>Instant Alerts</h3>
+                <p>Instant notifications allow you to stay on top of all of your reviews that require attention.</p>
+              </div>
+              <div className="col-md-6 text-sm-center service-block">
+                <h3>Happy Customers</h3>
+                <p>
+                  Keep all of your customers happy by showing that you care about their experience. New customers love to see that you have taken the time to respond to reviews!
+                </p>
+              </div>
                 </div>
               </div>
               <div className="col-md-4">
@@ -155,40 +143,31 @@ class Cover extends Component {
                   <small>Who We Are</small>About<br />Our Team
                 </h2>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-3">David Lowes
                 <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce
-                  tortor ante, auctor nec nunc quis, fermentum molestie justo.
-                  Fusce aliquet, velit quis blandit volutpat, felis nisl commodo
-                  ipsum, a condimentum turpis est sollicitudin justo.
+                  <img className="profile" href="/" src="img/DL.jpeg" alt="DL" />
                 </p>
+                JP
                 <p>
-                  Phasellus at odio tincidunt, maximus tellus a, sollicitudin
-                  enim. Cras quis sollicitudin purus. Curabitur metus leo,
-                  pulvinar non turpis sed, ultricies ultrices urna. Suspendisse
-                  potenti. Phasellus odio erat, vehicula tempor porttitor quis,
-                  hendrerit nec orci. Morbi convallis ipsum ac neque aliquam, et
-                  hendrerit nunc tristique
+                  <img className="profile" href="/" src="img/JP.jpeg" alt="JP" />
                 </p>
               </div>
-              <div className="col-md-4">
+              <div className="col-md-3"> Will Brooks
                 <p>
-                  ed id mi sed nisl faucibus luctus. Aliquam tristique sapien et
-                  odio semper, ut dapibus augue vehicula. Lorem ipsum dolor sit
-                  amet, consectetur adipiscing elit. Sed pharetra purus ipsum,
-                  ut sagittis orci venenatis nec. Suspendisse potenti. Ut
-                  egestas ullamcorper tristique. Cras nec enim et leo bibendum
-                  tempus. Suspendisse pretium sem a libero pellentesque cursus.
+                  <img className="profile" href="/" src="img/Will.jpeg" alt="Will" />
                 </p>
+                Vu
                 <p>
-                  Curabitur metus leo, pulvinar non turpis sed, ultricies
-                  ultrices urna. Suspendisse potenti. Phasellus odio erat,
-                  vehicula tempor porttitor quis, hendrerit nec orci. Morbi
-                  convallis ipsum ac neque aliquam, et hendrerit nunc tristique
+                  <img className="profile" href="/" src="img/Vu.jpeg" alt="Vu" />
+                </p>
+              </div>
+              <div className="col-md-3"> Jorge
+                <p>
+                  <img className="profile" href="/" src="img/Jorge.jpeg" alt="Jorge" />
                 </p>
                 <p>
                   <a href="#" className="btn btn-transparent-white btn-capsul">
-                    Explore More
+                    Learn More
                   </a>
                 </p>
               </div>
