@@ -105,8 +105,8 @@ class Dashboard extends Component {
                     <XAxis dataKey="name">
                       <Label
                         value="Most Recent Reviews"
-                        offset={535}
-                        position="top"
+                        offset={10}
+                        position="bottom"
                       />
                     </XAxis>
                     <YAxis

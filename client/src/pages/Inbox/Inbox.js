@@ -1,20 +1,75 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
+import SidebarReact from "../../components/Sidebar2";
 import Sidebar from "../../components/Sidebar";
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
+import MaterialTitlePanel from './material_title_panel';
+import SidebarContent from './sidebar_content';
 
 import "./Inbox.css";
+
+const mql = window.matchMedia(`(min-width: 950px)`);
+
+//sidebar styles
+const styles = {
+  contentHeaderMenuLink: {
+    textDecoration: 'none',
+    color: 'white',
+    padding: 8,
+  },
+  content: {
+    padding: '16px',
+  },
+  spanBlue: {
+  	color:"#304cb2",
+  }
+};
 
 class Inbox extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			reviews: [],
-			selectedReviewID: null
-		};
-		this.loadReviews();
-	}
+			selectedReviewID: null,
+			//sidebar state
+ 	 mql: mql,
+      docked: false,
+      open: false,
+    };
+    this.loadReviews();
+    this.mediaQueryChanged = this.mediaQueryChanged.bind(this);
+    this.toggleOpen = this.toggleOpen.bind(this);
+    this.onSetOpen = this.onSetOpen.bind(this);
+  }
+
+  componentWillMount() {
+    mql.addListener(this.mediaQueryChanged);
+    this.setState({mql: mql, docked: mql.matches});
+  }
+
+  componentWillUnmount() {
+    this.state.mql.removeListener(this.mediaQueryChanged);
+  }
+
+  onSetOpen(open) {
+    this.setState({open: open});
+  }
+
+  mediaQueryChanged() {
+    this.setState({
+      mql: mql,
+      docked: this.state.mql.matches,
+    });
+  }
+
+  toggleOpen(ev) {
+    this.setState({open: !this.state.open});
+
+    if (ev) {
+      ev.preventDefault();
+    }
+  }
 
 	loadReviews() {
 		API.getReviews()
@@ -70,14 +125,32 @@ class Inbox extends Component {
 	}
 
 	render() {
+	//sidebar
+	    const sidebar = <SidebarContent />;
+
+    const contentHeader = (
+      <span>
+        {!this.state.docked &&
+         <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>}
+        <span> Review</span><span style={styles.spanBlue}>Butler </span>
+      </span>);
+
+    const sidebarProps = {
+      sidebar: sidebar,
+      docked: this.state.docked,
+      open: this.state.open,
+      onSetOpen: this.onSetOpen,
+    };
 		//get the current review
 		const currentReview = this.state.reviews.find(
 			x => x._id === this.state.selectedReviewID
 		);
 		return (
-			<div className="flex-wrapper">
+			<div className='no-scroll'>
+		<SidebarReact {...sidebarProps}>
+        <MaterialTitlePanel title={contentHeader}>
+          <div className="flex-wrapper">
 		    	<div class="columns">
-					<Sidebar />
 						<ReviewList
 							reviews={this.state.reviews}
 							onReviewSelected={id => {
@@ -93,6 +166,10 @@ class Inbox extends Component {
 						/>
 					</div>	
 			</div>
+        </MaterialTitlePanel>
+      </SidebarReact>
+      </div>
+			
 		);
 	}
 }
