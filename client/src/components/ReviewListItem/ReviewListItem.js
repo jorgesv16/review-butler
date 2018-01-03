@@ -23,7 +23,7 @@ const ReviewListItem = ({review, onReviewClicked, active}) => {
 
 	//display a number of StarIcon components based rating (1 - 5)
 	for (var i = 0; i < review.rating; i++) {
-		 stars.push(<StarIcon key={i}/>);
+		 stars.push(<StarIcon key={i} size="small" />);
 	}
 
 	if (active) {

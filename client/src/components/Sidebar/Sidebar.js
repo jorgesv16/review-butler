@@ -5,7 +5,7 @@ import "./Sidebar.css";
 
 const Sidebar = props => (
 
-    <div className='float-md-left'>
+    <div className=''>
         <div className='sidebar full-height'>
             <div className='logo-container'>
                 <img className='logo-image' src='img/tux.png' alt="Review Butler Logo" />
@@ -15,7 +15,7 @@ const Sidebar = props => (
                 <li><NavLink to="/dashboard" activeClassName='active'>Dashboard</NavLink></li>
                 <li><NavLink to="/inbox" activeClassName='active'>Reviews</NavLink></li>
                 <li><NavLink to="/settings" activeClassName='active'>Settings</NavLink></li>
-                <li><NavLink to="/" activeClassName='active'>Logout</NavLink></li>
+                <li><NavLink to="/logout" activeClassName='active'>Logout</NavLink></li>
             </ul>
         </div>
     </div>

@@ -4,6 +4,8 @@ import Sidebar from "../../components/Sidebar";
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
 
+import "./Inbox.css";
+
 class Inbox extends Component {
 	constructor(props) {
 		super(props);
@@ -73,23 +75,23 @@ class Inbox extends Component {
 			x => x._id === this.state.selectedReviewID
 		);
 		return (
-			<div>
-				<Sidebar />
-				<div>
-					<ReviewList
-						reviews={this.state.reviews}
-						onReviewSelected={id => {
-							this.openReview(id);
-						}}
-						selectedReviewID={this.state.selectedReviewID}
-					/>
-					<ReviewDetail
-						review={currentReview}
-						onRespondedClicked={id => {
-							this.toggleResponded(id);
-						}}
-					/>
-				</div>
+			<div className="flex-wrapper">
+		    	<div class="columns">
+					<Sidebar />
+						<ReviewList
+							reviews={this.state.reviews}
+							onReviewSelected={id => {
+								this.openReview(id);
+							}}
+							selectedReviewID={this.state.selectedReviewID}
+						/>
+						<ReviewDetail
+							review={currentReview}
+							onRespondedClicked={id => {
+								this.toggleResponded(id);
+							}}
+						/>
+					</div>	
 			</div>
 		);
 	}

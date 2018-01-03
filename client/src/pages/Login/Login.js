@@ -1,37 +1,94 @@
 import React, {Component} from "react";
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom";
+import Dashboard from "../../pages/Dashboard";
+import should from 'should';
+import Auth from '../../modules/Auth';
 
 class Login extends Component {
+  constructor(props, context) {
+    super(props, context);
+    const storedMessage = localStorage.getItem('successMessage');
+    let successMessage = '';
 
-  constructor(props) {
-    super(props);
+    if (storedMessage) {
+      successMessage = storedMessage;
+      localStorage.removeItem('successMessage');
+    }
 
-    // bound functions
-    this.compileFormData = this.compileFormData.bind(this);
-    this.handleEmailChange = this.handleEmailChange.bind(this);
-    this.handlePasswordChange = this.handlePasswordChange.bind(this);
-
-    // component state
+    // set the initial component state
     this.state = {
-      email: '',
-      password: ''
+      errors: {},
+      successMessage,
+      user: {
+        email: '',
+        password: ''
+      }
     };
+
+    this.processForm = this.processForm.bind(this);
+    this.changeUser = this.changeUser.bind(this);
   }
 
-  // update state as email value changes
-  handleEmailChange(e) {
-    this.setState({email: e.target.value});
+  /**
+     * Process the form.
+     *
+     * @param {object} event - the JavaScript event object
+     */
+  processForm(event) {
+    // prevent default action. in this case, action is the form submission event
+    event.preventDefault();
+
+    // create a string for an HTTP body message
+    const email = encodeURIComponent(this.state.user.email);
+    const password = encodeURIComponent(this.state.user.password);
+    const formData = `email=${email}&password=${password}`;
+
+    // create an AJAX request
+    const xhr = new XMLHttpRequest();
+    xhr.open('post', 'api/authentication/login');
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.responseType = 'json';
+    xhr.addEventListener('load', () => {
+      if (xhr.status === 200) {
+        // success
+
+        // change the component-container state
+        this.setState({errors: {}});
+
+        // save the token
+        Auth.authenticateUser(xhr.response.token);
+
+        // change the current URL to /
+        // this.context.router.replace('/');
+      } else {
+        // failure
+
+        // change the component state
+        const errors = xhr.response.errors
+          ? xhr.response.errors
+          : {};
+        errors.summary = xhr.response.message;
+
+        this.setState({errors});
+      }
+    });
+    console.log(formData)
+    console.log(xhr.response)
+    xhr.send(formData);
   }
 
-  // update state as password value changes
-  handlePasswordChange(e) {
-    this.setState({password: e.target.value});
-  }
+  /**
+     * Change the user object.
+     *
+     * @param {object} event - the JavaScript event object
+     */
+  changeUser(event) {
+    const field = event.target.name;
+    const user = this.state.user;
+    user[field] = event.target.value;
 
-  compileFormData() {
-    const {loginFunction} = this.props;
-    const formData = this.state;
-    loginFunction(formData);
+    this.setState({user});
   }
 
   render() {
@@ -72,16 +129,22 @@ class Login extends Component {
           <div className="container">
             <div className="row">
               <div className="col-sm-10 col-md-6 col-lg-4 gradient">
-                <Form>
+                <Form
+                  onSubmit={this.processForm}
+                  onChange={this.changeUser}
+                  errors={this.state.errors}
+                  // successMessage={this.state.successMessage}
+                  user={this.state.user}
+                  action="/login">
                   <FormGroup>
                     <Label for="userEmail">Email</Label>
-                    <Input className="form-control input-lg" type="email" name="email" id="login-email" placeholder="your@emailaddress.com" value={this.state.email} onChange={this.handleEmailChange}/>
+                    <Input className="form-control input-lg" type="email" name="email" id="login-email" placeholder="your@emailaddress.com"/>
                   </FormGroup>
                   <FormGroup>
                     <Label for="userPassword">Password</Label>
-                    <Input className="form-control input-lg" type="password" name="password" id="login-password" placeholder="password" value={this.state.password} onChange={this.handlePasswordChange}/>
+                    <Input className="form-control input-lg" type="password" name="password" id="login-password" placeholder="password"/>
                   </FormGroup>
-                  <Button className="btn btn-lg btn-primary btn-block signup-btn" id="login-submit" onClick={this.compileFormData}>Login</Button>
+                  <Button className="btn btn-lg btn-primary btn-block signup-btn" id="login-submit">Login</Button>
                 </Form>
                 {/* <form action="/login" method="post" acceptCharset="utf-8" className="form" role="form">
                   <legend>Login</legend>

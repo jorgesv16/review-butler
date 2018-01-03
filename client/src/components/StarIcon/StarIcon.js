@@ -1,8 +1,8 @@
 import React from "react";
 import "./StarIcon.css";
-
+import classnames from 'classnames';
 const StarIcon = props => (
-  <i className="material-icons md-18 yellow">star_rate</i>
+  <i className={classnames('material-icons',props.size)}>star_rate</i>
 );
 
 export default StarIcon;
