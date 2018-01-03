@@ -1,0 +1,17 @@
+.review-detail {
+   background-color: #fff;
+   flex: 1;
+   padding: 50px;
+   font-family: 'Roboto', sans-serif;
+}
+
+.flex-row {
+   display: flex;
+   flex-direction: row;
+   justify-content: flex-start;
+}
+
+.signup-sec {
+	float: top;
+	height: 100vh;
+}
