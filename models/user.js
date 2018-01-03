@@ -18,7 +18,7 @@ const UserSchema = new Schema({
   display_name: String,
   url: String,
   display_occupation: String,
-  business_id: { type: String, required: true },
+  business_id: String,
   reviews: [
     {
       type: Schema.Types.ObjectId,

@@ -4,6 +4,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect} from "react-router-dom
 import Dashboard from "../../pages/Dashboard";
 import should from 'should';
 import Auth from '../../modules/Auth';
+import {withRouter} from 'react-router-dom';
 
 class Login extends Component {
   constructor(props, context) {
@@ -52,12 +53,15 @@ class Login extends Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
+        console.log("success", xhr);
 
         // change the component-container state
         this.setState({errors: {}});
 
         // save the token
         Auth.authenticateUser(xhr.response.token);
+        this.props.history.push("/inbox");
+
 
         // change the current URL to /
         // this.context.router.replace('/');

@@ -24,7 +24,7 @@ module.exports = new PassportLocalStrategy({
     username: req.body.username.trim(),
   };
   const newUser = new User(userData);
-  console.log(newUser)
+  console.log("passport new user", newUser)
   newUser.create((err) => {
     if (err) { return done(err); }
 
