@@ -99,7 +99,7 @@ class Login extends Component {
             <button className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse1" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
               <span className="navbar-toggler-icon"/>
             </button>
-            <a className="navbar-brand mx-auto" href="/"><img className="logo" src="img/tux_blue.png"/>Review<span>Butler</span>
+            <a className="navbar-brand mx-auto" href="/"><img className="logo" src="img/tux_blue.png" alt="bluetux"/>Review<span>Butler</span>
             </a>
             <div className="collapse navbar-collapse" id="navbarCollapse1">
               <ul className="navbar-nav ml-auto">

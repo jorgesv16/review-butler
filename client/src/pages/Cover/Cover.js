@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 
-const hero1 = {"background":"url('img/hero1.jpg'"};
-
 class Cover extends Component {
 
   render() {
@@ -21,7 +19,7 @@ class Cover extends Component {
               <span className="navbar-toggler-icon" />
             </button>
             <a className="navbar-brand mx-auto" href="#">
-              <img className="logo" href="/" src="img/tux_blue.png" />Review<span>
+              <img className="logo" href="/" src="img/tux_blue.png" alt="tuxlogo" />Review<span>
                 Butler
               </span>
             </a>
@@ -144,7 +142,7 @@ class Cover extends Component {
               </div>
               <div className="col-md-4">
                 {" "}
-                <img src="img/feature1.jpg" className="img-fluid" />{" "}
+                <img src="img/feature1.jpg" className="img-fluid" alt="featureimage" />{" "}
               </div>
             </div>
           </div>

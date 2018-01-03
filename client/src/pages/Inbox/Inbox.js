@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
 import SidebarReact from "../../components/Sidebar2";
-import Sidebar from "../../components/Sidebar";
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
 import MaterialTitlePanel from './material_title_panel';
@@ -150,7 +149,7 @@ class Inbox extends Component {
 		<SidebarReact {...sidebarProps}>
         <MaterialTitlePanel title={contentHeader}>
           <div className="flex-wrapper">
-		    	<div class="columns">
+		    	<div className="columns">
 						<ReviewList
 							reviews={this.state.reviews}
 							onReviewSelected={id => {
