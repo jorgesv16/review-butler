@@ -131,7 +131,7 @@ router.post('/register', (req, res) => {
       return res.send(JSON.stringify({ error: err }));
     }
     else {
-      console.log("sucess")
+      console.log("success")
     // Otherwise, for now, send back a JSON object with the new user's info
     return res.send(JSON.stringify(user));
   }
@@ -148,17 +148,17 @@ router.post('/login', async (req, res) => {
   // if they exist, they'll have a username, so add that to our body
   if (foundUser) { 
     req.body.username = foundUser.username; 
-    req.body.token = foundUser._id;
+    req.body.id = foundUser._id;
   }
   console.log(foundUser);
   console.log(req.body);
   passport.authenticate('local-login')(req, res, () => {
-    console.log("req", res.body);
+    console.log("req", req.res._body);
     // console.log("res", res);
     // If logged in, we should have user info to send back
-    if (req._body) {
+    if (res._body) {
       console.log("success");
-      return res.send(JSON.stringify(req.body));
+      return res.send(JSON.stringify(res.body));
     }
     else {
     // Otherwise return an error

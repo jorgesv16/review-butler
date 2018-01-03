@@ -15,6 +15,7 @@ constructor(props, context) {
       last_name: '',
       email: '',
       phone: '',
+      business_id: '',
       username: '',
       password: ''
     }
@@ -29,9 +30,10 @@ constructor(props, context) {
     const last_name = encodeURIComponent(this.state.user.last_name);
     const email = encodeURIComponent(this.state.user.email);
     const phone = encodeURIComponent(this.state.user.phone);
+    const business_id = encodeURIComponent(this.state.user.business_id);
     const username = encodeURIComponent(this.state.user.username);
     const password = encodeURIComponent(this.state.user.password);
-    const formData = `first_name=${first_name}&last_name=${last_name}&email=${email}&phone=${phone}&username=${username}&password=${password}`;
+    const formData = `first_name=${first_name}&last_name=${last_name}&email=${email}&phone=${phone}&business_id=${business_id}&username=${username}&password=${password}`;
 
     // create an AJAX request
     const xhr = new XMLHttpRequest();
@@ -147,6 +149,8 @@ constructor(props, context) {
                         <input type="email" name="email" className="form-control input-lg" placeholder="Email" id="signup-email"/>
                         <br/>
                         <input type="tel" name="phone" className="form-control input-lg" placeholder="Phone" id="signup-phone"/>
+                        <br/>
+                        <input type="tel" name="business_id" className="form-control input-lg" placeholder="business id" id="signup-businessid"/>
                         <br/>
                         <br/>
                         <h5>Account details</h5>
