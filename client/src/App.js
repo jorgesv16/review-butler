@@ -1,15 +1,25 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+// import routes from "./routes.js";
+
 import Dashboard from "./pages/Dashboard";
 import Settings from "./pages/Settings";
-import Sidebar from "./components/Sidebar";
 import Inbox from "./pages/Inbox";
+import Cover from "./pages/Cover";
+import Signup from "./pages/Signup";
+import Login from "./pages/Login";
 
-const App = () => (
+
+
+// import Sidebar from "./components/Sidebar";
+
+const App = (props) => (
 	<Router>
 	<div>
-		<Sidebar />
 		<Switch>
+			<Route exact path="/" component={Cover} />
+			<Route exact path="/signup" component={Signup} />
+			<Route exact path="/login" component={Login} />
 			<Route exact path="/dashboard" component={Dashboard} />
 			<Route exact path="/settings" component={Settings} />
 			<Route exact path="/inbox" component={Inbox} />

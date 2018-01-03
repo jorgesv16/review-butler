@@ -9,6 +9,17 @@ const ReviewListItem = ({review, onReviewClicked, active}) => {
 	let stars = [];
 
 	let itemClass = "inactive";
+	let iconName = "label";
+
+	//change the icon to read
+	if (review.review_read) {
+		iconName = "label_outline";
+	}
+
+	//change the icon to responded
+	if (review.response_date) {
+		iconName = "reply";
+	}
 
 	//display a number of StarIcon components based rating (1 - 5)
 	for (var i = 0; i < review.rating; i++) {
@@ -23,7 +34,7 @@ const ReviewListItem = ({review, onReviewClicked, active}) => {
 		<li onClick={() => onReviewClicked(review._id)} className={itemClass}>
 			
 				<div className="review-item-icons">
-					<i className="material-icons md-18 md-dark md-inactive">reply</i>
+					<i className="material-icons md-18 md-dark md-inactive">{iconName}</i>
 				</div>
 				<div className="review-item-details">
 					<div className="review-item-heading">

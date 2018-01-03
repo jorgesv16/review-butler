@@ -1,13 +1,20 @@
+require('babel-register');
 const express = require("express");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
-const mongoose = require("mongoose");
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
 const expressSession = require('express-session');
+const path = require("path");
+const webpack = require('webpack');
+const webpackConfig = require('./webpack.config.babel');
+const passport = require('passport');
 
 // Routes
-const routes = require("./routes");
+const index = require('./routes/index');
+const api = require('./routes/api/index');
+const users = require('./routes/api/users');
+const reviews = require('./routes/api/reviews')
+const authentication = require('./routes/api/authentication');
+const authCheckMiddleware = require('./routes/api/auth-check');
 
 const app = express();
 
@@ -24,24 +31,25 @@ app.use(require('express-session')({
   resave: false,
   saveUninitialized: false
 }));
+// load passport strategies
+const localSignupStrategy = require('./controllers/passport/local-signup');
+const localLoginStrategy = require('./controllers/passport/local-login');
+passport.use('local-signup', localSignupStrategy);
+passport.use('local-login', localLoginStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(express.static("client/build"))
 
-// Serve up static assets
-app.use(express.static("client/build"));
-// Add routes, both API and view
-app.use(routes);
+app.use('/api', api);
+app.use('/api/users', users);
+app.use('/api/reviews', reviews);
+app.use('/api/authentication', authentication);
+app.use('/api', authCheckMiddleware); // <-- should be /api not api/authcheck
+app.use('/*', index);
 
-// Configure passport
-const User = require('./models/user');
-passport.use(new LocalStrategy(User.authenticate()));
-passport.serializeUser(User.serializeUser());
-passport.deserializeUser(User.deserializeUser());
-
-// Set up promises with mongoose
+const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-// Connect to the Mongo DB
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/reviewbutler",
   {

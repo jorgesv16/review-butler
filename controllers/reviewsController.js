@@ -1,6 +1,5 @@
 const db = require("../models");
 
-// Defining methods for the booksController
 module.exports = {
   findAll: function(req, res) {
     console.log('reviewsController - findAll');
@@ -28,6 +27,8 @@ module.exports = {
   },
   update: function(req, res) {
         console.log('reviewsController - update');
+
+    console.log("params, body:", req.params.id , req.body)
 
     db.Review
       .findOneAndUpdate({ _id: req.params.id }, req.body)

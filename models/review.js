@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-var ReviewSchema = new Schema({
+const ReviewSchema = new Schema({
   tags:  Array,
   sentiment_score: Number,
   text: {type: String, required: true },
