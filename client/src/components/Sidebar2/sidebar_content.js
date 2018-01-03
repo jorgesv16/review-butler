@@ -1,20 +1,30 @@
 import React from 'react';
 import MaterialTitlePanel from './material_title_panel';
 import PropTypes from 'prop-types';
+import { NavLink } from 'react-router-dom';
+
+import "./Sidebar.css";
 
 const styles = {
   sidebar: {
-    width: 256,
+    width: 220,
     height: '100%',
   },
   sidebarLink: {
-    display: 'block',
-    padding: '16px 0px',
-    color: '#757575',
-    textDecoration: 'none',
+    height: "120px",
+    padding: "50px 0 50px 30px",
+    textDecoration: "none",
+    width: "220px",
+    transition: "background-color .3s linear 0s",
+    color: "#fff",
+    listStyle: "none outside none",
+    bordeBottom: "1px solid #4468af",
+    fontSize: "13px",
+    textTransform: "uppercase",
+    textDecoration: "none",
   },
   divider: {
-    margin: '8px 0',
+    margin: '0px 0',
     height: 1,
     backgroundColor: '#757575',
   },
@@ -28,20 +38,15 @@ const styles = {
 const SidebarContent = (props) => {
   const style = props.style ? {...styles.sidebar, ...props.style} : styles.sidebar;
 
-  const links = [];
-
-  for (let ind = 0; ind < 10; ind++) {
-    links.push(
-      <a key={ind} href="#" style={styles.sidebarLink}>Mock menu item {ind}</a>);
-  }
-
   return (
-    <MaterialTitlePanel title="ReviewButler" style={style}>
-      <div style={styles.content}>
-        <a href="index.html" style={styles.sidebarLink}>Home</a>
-        <a href="responsive_example.html" style={styles.sidebarLink}>Responsive Example</a>
-        <div style={styles.divider} />
-        {links}
+    <MaterialTitlePanel title="" style={style}>
+      <div className='sidebar full-height'>
+            <ul>
+                <li><NavLink to="/dashboard" activeClassName='active'>Dashboard</NavLink></li>
+                <li><NavLink to="/inbox" activeClassName='active'>Reviews</NavLink></li>
+                <li><NavLink to="/settings" activeClassName='active'>Settings</NavLink></li>
+                <li><NavLink to="/logout" activeClassName='active'>Logout</NavLink></li>
+            </ul>
       </div>
     </MaterialTitlePanel>
   );

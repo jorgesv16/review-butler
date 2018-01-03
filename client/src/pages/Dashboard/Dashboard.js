@@ -52,7 +52,8 @@ class Dashboard extends Component {
       mini.value = this.state.reviews[i].rating;
       data.push(mini);
     }
-    var average = totalRating / this.state.reviews.length;
+    const totalReviews = this.state.reviews.length;
+    var average = totalRating / totalReviews;
     var averageStars = Math.floor(totalRating / this.state.reviews.length);
     var ones = 0;
     var twos = 0;
@@ -98,7 +99,8 @@ class Dashboard extends Component {
             <Sidebar />
             <div className="full-height dashboard-detail">
             <h2>Dashboard</h2>
-            <div className="star-rating">Average Star Rating: {stars}</div>
+            <br/>
+            <div className="star-rating">Average Rating: {stars} - {average.toFixed(2)} from {totalReviews} Reviews</div>
               <div className="flex-row">
                 <ResponsiveContainer width="45%" aspect={4.0 / 3.0} className="graph-box">
                   <LineChart data={data}>

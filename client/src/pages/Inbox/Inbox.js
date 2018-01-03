@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import API from "../../utils/API";
-import SidebarReact from "../../components/Sidebar2";
-import Sidebar from "../../components/Sidebar";
 import ReviewDetail from "../../components/ReviewDetail";
 import ReviewList from "../../components/ReviewList";
-import MaterialTitlePanel from './material_title_panel';
-import SidebarContent from './sidebar_content';
+
+
+// import Sidebar from "../../components/Sidebar";
+import SidebarReact from "../../components/Sidebar2";
+import SidebarContent from '../../components/Sidebar2/sidebar_content';
+import MaterialTitlePanel from '../../components/Sidebar2/material_title_panel';
 
 import "./Inbox.css";
 
@@ -21,7 +23,10 @@ const styles = {
   content: {
     padding: '16px',
   },
-  spanBlue: {
+  spanDarkBlue: {
+  	color:"#213371",
+  },
+    spanBlue: {
   	color:"#304cb2",
   }
 };
@@ -33,7 +38,7 @@ class Inbox extends Component {
 			reviews: [],
 			selectedReviewID: null,
 			//sidebar state
- 	 mql: mql,
+ 	  mql: mql,
       docked: false,
       open: false,
     };
@@ -126,13 +131,13 @@ class Inbox extends Component {
 
 	render() {
 	//sidebar
-	    const sidebar = <SidebarContent />;
+	const sidebar = <SidebarContent />;
 
     const contentHeader = (
       <span>
         {!this.state.docked &&
          <a onClick={this.toggleOpen.bind(this)} href="#" style={styles.contentHeaderMenuLink}>=</a>}
-        <span> Review</span><span style={styles.spanBlue}>Butler </span>
+        <span style={styles.spanDarkBlue}> REVIEW</span><span style={styles.spanBlue}>BUTLER </span>
       </span>);
 
     const sidebarProps = {
