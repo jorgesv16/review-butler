@@ -58,6 +58,7 @@
     "redux-thunk": "^2.2.0",
     "sass-loader": "^6.0.6",
     "webpack": "^3.10.0",
-    "whatwg-fetch": "^2.0.3"
+    "whatwg-fetch": "^2.0.3",
+    "yelp-fusion": "^2.0.3"
   }
 }

@@ -4,18 +4,18 @@ const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
 const UserSchema = new Schema({
-  id:  Number,
   username: String,
   password: { type: String, select: false },
   first_name: String,
   last_name: String,
-  phone: Number,
+  phone: String,
   email: String,
   address: String,
   platform_url: String,
   display_name: String,
   url: String,
   display_occupation: String,
+  business_id: { type: String, required: true },
   reviews: [
     {
       type: Schema.Types.ObjectId,
