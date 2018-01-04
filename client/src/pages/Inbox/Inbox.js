@@ -24,10 +24,10 @@ const styles = {
     padding: '16px',
   },
   spanDarkBlue: {
-  	color:"#213371",
+  	color:"#fff",
   },
     spanBlue: {
-  	color:"#304cb2",
+  	color:"#007bff",
   }
 };
 

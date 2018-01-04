@@ -24,8 +24,27 @@ export default {
     },
     // Saves an article to the database
     updateReview: function(id, reviewData) {
-      console.log('updateReview', 'id:', id, 'reviewData:', reviewData)
       console.log('API.js: updateReview, ID, reviewData',id, reviewData)
         return axios.put("/api/reviews/" + id, reviewData);
+    },
+
+
+    // Gets array of all users
+    getUsers: function() {
+      console.log('API.js: getUsers')
+        return axios.get("/api/users/list");
+    },
+
+    // Gets specific user
+    getUser: function(id) {
+      console.log('API.js: getUser', 'id:', id)
+        return axios.get("/api/users/" + id);
+    },
+
+        // Saves an article to the database
+    getPhrases: function(phrasesData) {
+      console.log('API.js -  getPhrases', 'phrasesData:', phrasesData)
+        return axios.get("/api/phrases", {params: phrasesData});
     }
+
 };

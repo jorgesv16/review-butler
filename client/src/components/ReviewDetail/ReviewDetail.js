@@ -16,6 +16,10 @@ class ReviewDetail extends Component {
 		this.state = {
 			responseText: "loading"
 		};
+
+		this.updateResponse = this.updateResponse.bind(this);
+		this.updateResponseText = this.updateResponseText.bind(this);
+
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -30,9 +34,134 @@ class ReviewDetail extends Component {
 		API.updateReview(reviewID, { response_text: newText });
 	}
 
+
+	onNewResponseClicked() {
+		let phrases = [];
+		let nounPhrases = [];
+		let positiveNoun;
+		let negativeNoun;
+		let currentReview = this.props.review;
+		let rating = currentReview.rating;
+		//check if tags exist
+		if (currentReview.tags) {
+			console.log("Tags exist");
+
+			positiveNoun = this.getPositiveNoun(currentReview.tags);
+			// console.log("positiveNoun", positiveNoun);
+			if (positiveNoun) {
+				//5 is a positive phrase
+				nounPhrases[0] = this.findNounPhrase(3, 5, positiveNoun);
+			}
+
+			negativeNoun = this.getNegativeNoun(currentReview.tags);
+			// console.log("negativeNoun", negativeNoun);
+			if (negativeNoun) {
+				//1 is a negative phrase
+				nounPhrases[1] = this.findNounPhrase(3, 1, negativeNoun);
+			}
+		} else {
+			console.log("No Tags Found");
+		}
+
+		//iterate through all phrase categories to build a sentence (there is 1,2,3,4,6)
+		for (var i = 1; i < 6; i++) {
+			//find a random phrase for each category
+			//category 3 contains phrases regarding positive (and negative) nouns found in the review
+			if (i != 3) {
+				// phrases[i] = this.findPhrase(i, rating);
+				this.updateResponse = this.updateResponse.bind(this);
+
+			}
+		}
+	}
+
+	findPhrase(category, rating) {
+		// console.log("findPhrase", "category:", category, "rating:", rating);
+		API.getPhrases({ category: category, rating: rating })
+			.then(res => {
+				// console.log('then', 'res.data:', res.data)
+				//select a random response from the phrases
+				const randomIndex = Math.floor(Math.random() * res.data.length);
+				//this is a phrase relating to a positive noun
+				console.log(
+					`findPhrase(${category}) ${res.data[randomIndex].text}`
+				);
+				return res.data[randomIndex].text;
+			})
+			.catch(err => console.log(err));
+	}
+
+	findNounPhrase(category, rating, noun) {
+		// console.log('findNounPhrase', 'category:', category, 'rating:', rating, 'noun:', noun)
+		API.getPhrases({ category: category, rating: rating })
+			.then(res => {
+				// console.log('then', 'res.data:', res.data)
+				//select a random response from the phrases
+				const randomIndex = Math.floor(Math.random() * res.data.length);
+				//this is a phrase relating to a positive noun
+				if (rating === 5) {
+					//insert the positive noun into the phrase
+					// console.log('findNounPhrase(3 +)', res[randomIndex].text.replace(/-NOUN-/g, noun));
+					
+console.log("Positive Phrase", res.data[randomIndex].text.replace(/-NOUN-/g, noun));
+					return res.data[randomIndex].text.replace(/-NOUN-/g, noun);
+
+					//this is a phrase relating to a positive noun
+				} else if (rating === 1) {
+					//insert the positive noun into the phrase
+					// console.log('findNounPhrase(3 -)', res[randomIndex].text.replace(/-NOUN-/g, noun));
+					
+console.log('Negative Phrase:', res.data[randomIndex].text.replace(/-NOUN-/g, noun));
+					return res.data[randomIndex].text.replace(/-NOUN-/g, noun);
+				}
+			})
+			.then(res => {
+				//wait half a second to ensure all database calls are finished
+					setTimeout(function() { this.updateResponse("aaa") }.bind(this), 500);
+			})
+			.catch(err => console.log(err));
+	}
+
+	getNegativeNoun(tags) {
+		let minScore = -0.5;
+		let negativeNoun = "";
+		tags.forEach((tag, i) => {
+			const score = tag.sentiment.score;
+			const noun = tag.name;
+			// console.log(`${noun} : ${score}`);
+			if (score < minScore) {
+				minScore = score;
+				negativeNoun = tag.name;
+				// console.log('postiveNoun:', negativeNoun)
+			}
+		});
+		return negativeNoun;
+	}
+
+	getPositiveNoun(tags) {
+		let maxScore = 0.5;
+		let positiveNoun = "";
+		tags.forEach((tag, i) => {
+			const score = tag.sentiment.score || 0;
+			const noun = tag.name;
+			// console.log(`${noun} : ${score}`);
+			if (score > maxScore) {
+				maxScore = score;
+				positiveNoun = tag.name;
+				// console.log('postiveNoun:', positiveNoun)
+			}
+		});
+		return positiveNoun;
+	}
+
+	updateResponse() {
+		console.log("L403", "updateResponse");
+
+	}
+
 	render() {
 		let review = this.props.review;
-		console.log("review", review);
+		// console.log("review", review);
 		const onRespondedClicked = this.props.onRespondedClicked;
 
 		if (!review) {
@@ -78,7 +207,7 @@ class ReviewDetail extends Component {
 		});
 
 		const response = review.response_text;
-		console.log("response", response);
+		// console.log("response", response);
 
 		return (
 			<div className="full-height review-detail">
@@ -135,6 +264,12 @@ class ReviewDetail extends Component {
 						"No"
 					)}{" "}
 				</div>
+				<RaisedButton
+					label="New Response"
+					onClick={() => this.onNewResponseClicked()}
+					className="btn-space"
+					icon={<i className="material-icons">autorenew</i>}
+				/>
 				<CopyToClipboard
 					text={this.state.responseText}
 					onCopy={() => this.setState({ copied: true })}
