@@ -7,7 +7,7 @@ const styles = {
     fontWeight: 300,
   },
   header: {
-    backgroundColor: '#03a9f4',
+    backgroundColor: '#111b40',
     color: 'blue',
     padding: '16px',
     fontSize: '1.5em',
@@ -19,7 +19,8 @@ const MaterialTitlePanel = (props) => {
 
   return (
     <div style={rootStyle}>
-      <div style={styles.header}>{props.title}</div>
+    
+      <div style={styles.header}>{!props.title ? <img className='logo-image' src='img/tux.png' alt='Review Butler Logo' /> : props.title}</div>
       {props.children}
     </div>
   );

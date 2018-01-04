@@ -6,10 +6,7 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
-  Col,
-  Row,
-  Container
+  Input
 } from "reactstrap";
 import Sidebar from "../../components/Sidebar";
 
@@ -95,11 +92,10 @@ class Settings extends Component {
   render() {
     return (
       <div className="flex-wrapper">
-        <div class="columns">
+        <div className="columns">
           <Sidebar />
           <div className="full-height settings-detail">
             <h2>Settings</h2>
-
           <div className="col-md-8 offset-md-2 center-block">
                 <div className="container" id="wrap">
                   <div className="row">
@@ -171,13 +167,14 @@ class Settings extends Component {
               </Button>
             </Form>
                     </div>
+
                   </div>
                 </div>
               </div>
             </div>
-            
           </div>
         </div>
+      </div>
     );
   }
 }

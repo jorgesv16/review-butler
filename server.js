@@ -13,6 +13,7 @@ const index = require('./routes/index');
 const api = require('./routes/api/index');
 const users = require('./routes/api/users');
 const reviews = require('./routes/api/reviews')
+const phrases = require('./routes/api/phrases')
 const authentication = require('./routes/api/authentication');
 const authCheckMiddleware = require('./routes/api/auth-check');
 
@@ -43,6 +44,7 @@ app.use(express.static("client/build"))
 
 app.use('/api', api);
 app.use('/api/users', users);
+app.use('/api/phrases', phrases);
 app.use('/api/reviews', reviews);
 app.use('/api/authentication', authentication);
 app.use('/api', authCheckMiddleware); // <-- should be /api not api/authcheck
