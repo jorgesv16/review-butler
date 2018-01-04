@@ -39,7 +39,7 @@ export default {
     getUser: function(id) {
       console.log('API.js: getUser', 'id:', id)
         return axios.get("/api/users/" + id);
-    }
+    },
 
         // Saves an article to the database
     getPhrases: function(phrasesData) {

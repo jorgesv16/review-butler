@@ -166,8 +166,6 @@ class Settings extends Component {
                 Save
               </Button>
             </Form>
-                    </div>
-
                   </div>
                 </div>
               </div>
