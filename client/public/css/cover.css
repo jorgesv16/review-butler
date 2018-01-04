@@ -96,7 +96,8 @@ section {
 	width: 100%;
 }
 .sps--abv {
-	background-color: transparent;
+	background-color: #f2f2f2;
+	opacity: 0.9;
 	color: #000;
 }
 .sps--blw {
