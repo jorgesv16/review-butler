@@ -268,7 +268,7 @@ console.log('Negative Phrase:', res.data[randomIndex].text.replace(/-NOUN-/g, no
 					label="New Response"
 					onClick={() => this.onNewResponseClicked()}
 					className="btn-space"
-					icon={<i class="material-icons">autorenew</i>}
+					icon={<i className="material-icons">autorenew</i>}
 				/>
 				<CopyToClipboard
 					text={this.state.responseText}
