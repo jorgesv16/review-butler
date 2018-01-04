@@ -53,6 +53,7 @@ constructor(props, context) {
 
         // set a message
         localStorage.setItem('successMessage', xhr.response._id);
+        sessionStorage.setItem('token', xhr.response._id);
         this.props.history.push("/login");
         const errors = xhr.response.errors ? xhr.response.errors : {};
         errors.summary = xhr.response.message;

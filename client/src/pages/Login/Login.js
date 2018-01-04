@@ -53,13 +53,15 @@ class Login extends Component {
     xhr.addEventListener('load', () => {
       if (xhr.status === 200) {
         // success
-        console.log("success", xhr);
+        console.log("SUCCESS");
+        console.log(xhr)
 
         // change the component-container state
         this.setState({errors: {}});
 
         // save the token
-        Auth.authenticateUser(xhr.response.token);
+        localStorage.setItem('successMessage', xhr.response.statusText);
+        sessionStorage.setItem('token', xhr.response._id);
         this.props.history.push("/inbox");
 
 
@@ -77,8 +79,6 @@ class Login extends Component {
         this.setState({errors});
       }
     });
-    console.log(formData)
-    console.log(xhr.response)
     xhr.send(formData);
   }
 
