@@ -289,7 +289,7 @@ const reviewSeed = [
     "user_name" : "Fashions M.",
     "platform" : "Yelp",
     "response_text" : "Thanks for sharing your experience, We work really hard to offer the best experience for our guests so I'm grateful to see that you enjoyed the spot. ,Thanks again for your comments,Kind Regards,",
-    "review_read" : Date("2018-01-04T19:59:25.220Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:39.681Z"),
     "__v" : 0
@@ -433,7 +433,7 @@ const reviewSeed = [
     "user_name" : "Jade M.",
     "platform" : "Yelp",
     "response_text" : "Thank you for your comments,Apologies about the bagel this is far below the standard that we set ourselves. We hope to have the opportunity to show you the quality of service that we are known for. ,Once again, I apologise for the experience you received,Thanks,",
-    "review_read" : Date("2018-01-04T20:09:03.203Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:39.702Z"),
     "__v" : 0
@@ -978,7 +978,7 @@ const reviewSeed = [
     "user_name" : "Tay B.",
     "platform" : "Yelp",
     "response_text" : "Thank you for your comments,Apologies about the experience that you had,,Thanks again for your feedback,Kind Regards,",
-    "review_read" : Date("2018-01-04T20:09:03.958Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:39.714Z"),
     "__v" : 0
@@ -1548,7 +1548,7 @@ const reviewSeed = [
     "user_name" : "Pariya N.",
     "platform" : "Yelp",
     "response_text" : "Thank you for taking the time to share your feedback,Apologies about the experience that you had,Thank you for informing us about the cookies. We hope we have the opportunity to show you an improvement in our cookies on your next visit. ,Thanks again for reaching out,Kind Regards,",
-    "review_read" : Date("2018-01-04T20:07:47.889Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:39.725Z"),
     "__v" : 0
@@ -1800,7 +1800,7 @@ const reviewSeed = [
     "user_name" : "Philip H.",
     "platform" : "Yelp",
     "response_text" : "Thank you for taking the time to share your experience,I'm glad you enjoyed your visit,I love to read that you enjoyed the Service. ,We look forward to seeing you again,Thanks,",
-    "review_read" : Date("2018-01-04T19:58:36.592Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:39.740Z"),
     "__v" : 0
@@ -2521,7 +2521,7 @@ const reviewSeed = [
     "user_name" : "Chrystal N.",
     "platform" : "Yelp",
     "response_text" : "Thank you for your review,I'm glad you enjoyed your visit,It was nice to read about your experience with our brews. ,We hope to see you back soon,Kind Regards,",
-    "review_read" : Date("2018-01-04T19:58:53.346Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:39.752Z"),
     "__v" : 0
@@ -10469,7 +10469,7 @@ const reviewSeed = [
     "user_name" : "Janae L.",
     "platform" : "Yelp",
     "response_text" : "Hi,,It was nice to read about your experience with our cafe. ,Thanks again for your comments,Thanks,",
-    "review_read" : Date("2018-01-04T20:07:55.213Z"),
+    "review_read" : null,
     "business_id" : "ks-internet-cafe-berkeley",
     "timestamp" : Date("2018-01-04T19:09:40.082Z"),
     "__v" : 0
