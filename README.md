@@ -7,7 +7,8 @@ Many business owners don't have the time or technical understanding to respond t
 
 ## Demo:
 You can view a demo [here](https://frozen-brushlands-37289.herokuapp.com) 
-![Review Butler Screenshot](ReviewButler300.png "RReview Butler Screenshot")
+
+![Review Butler Screenshot](ReviewButler300.png "Review Butler Screenshot")
 
 
 ## Technologies Used
@@ -25,9 +26,3 @@ You can view a demo [here](https://frozen-brushlands-37289.herokuapp.com)
 * [JP Oliveira](https://github.com/JPauloBR) 
 * [Vu Vong](https://github.com/tsukoni)
 * [Jorge Salas-Vasquez](https://github.com/jorgesv16) 
- 
-
-## Acknowledgement
-Instructor - David Hallinan
-TA - Abraham Fergie
-TA - Marco Chan
