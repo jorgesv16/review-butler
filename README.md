@@ -6,7 +6,7 @@
 Many business owners don't have the time or technical understanding to respond to customer reviews. Review Butler checks Yelp for new customer reviews and uses Natural Language Processing to automatically generate a response based on the review sentiment and keywords. The app then displays the reviews and responses in an easy to use 'email inbox' like interface. 
 
 ## Demo:
-You can view a demo [here](https://frozen-brushlands-37289.herokuapp.com) 
+You can view a demo [here](https://frozen-brushlands-37289.herokuapp.com/inbox) 
 
 ![Review Butler Screenshot](ReviewButler300.png "Review Butler Screenshot")
 
